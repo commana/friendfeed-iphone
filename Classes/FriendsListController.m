@@ -29,7 +29,7 @@
 		// Initialize your view controller.
 		self.title = @"Friends";
 		self.tabBarItem.image = [UIImage imageNamed:@"seesmic.png"]; 
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:FFSettingsChanged object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:@"FFSettingsChanged" object:nil];
 		}
 	return self;
 }
@@ -69,8 +69,8 @@
 
 -(void) settingsChange: (NSNotification *) note{
 	NSLog(@"loading with new param");
-	[self initConnectionForUserName:[[NSUserDefaults standardUserDefaults] valueForKey:FFUserName] 
-						  remoteKey: [[NSUserDefaults standardUserDefaults] valueForKey:FFRemoteKey]];
+	[self initConnectionForUserName:[[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"] 
+						  remoteKey: [[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"]];
 	
 }
 

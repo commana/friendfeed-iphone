@@ -27,7 +27,7 @@
 		self.title = @"Me";
 		self.tabBarItem.image = [UIImage imageNamed:@"flickr.png"];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:FFSettingsChanged object:nil];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:@"FFSettingsChanged" object:nil];
 	}
 	return self;
 }
@@ -64,10 +64,15 @@
 }
 
 
+// FIXME
 -(void) settingsChange: (NSNotification *) note{
 	NSLog(@"loading with new param");
-	[self initConnectionForUserName:[[NSUserDefaults standardUserDefaults] valueForKey:FFUserName] 
-						  remoteKey: [[NSUserDefaults standardUserDefaults] valueForKey:FFRemoteKey]];
+	NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"];
+	if (userName == nil) userName = @"commana";
+	NSString *remoteKey =  [[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"];
+	if (remoteKey == nil) remoteKey = @"yooy";
+	
+	[self initConnectionForUserName:userName remoteKey:remoteKey];
 	
 }
 

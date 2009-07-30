@@ -19,7 +19,7 @@
 @synthesize tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {	
-
+	NSLog(@"app did finish launching");
 	// Create a tabbar controller and an array to contain the view controllers
 	tabBarController = [[UITabBarController alloc] init];
 	NSMutableArray *localViewControllersArray = [[NSMutableArray alloc] initWithCapacity:2];
@@ -53,7 +53,7 @@
 	tabBarController.viewControllers = localViewControllersArray;
 	[localViewControllersArray release];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:FFSettingsChanged object:nil]; 
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"FFSettingsChanged" object:nil]; 
 	// Create window
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     

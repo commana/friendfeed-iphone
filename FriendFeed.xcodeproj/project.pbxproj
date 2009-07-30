@@ -62,10 +62,9 @@
 		34CF51560DA6F77C00905FB6 /* everyone.png in Resources */ = {isa = PBXBuildFile; fileRef = 34CF51550DA6F77C00905FB6 /* everyone.png */; };
 		34CF515C0DA6FA5D00905FB6 /* picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 34CF515B0DA6FA5D00905FB6 /* picture.png */; };
 		34D0CFCE0DA4B5EE00D09F5D /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 34D0CFCD0DA4B5EE00D09F5D /* twitter.png */; };
+		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		796227F20F2AF20F00DB1232 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 796227F10F2AF20F00DB1232 /* Base64.m */; };
 		79DA8FA60F2329E10095139A /* toolbar_settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DA8FA50F2329E10095139A /* toolbar_settings.png */; };
-		79DA8FB20F232AEA0095139A /* settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79DA8FB10F232AEA0095139A /* settings.xib */; };
-		79DA8FBA0F232DB20095139A /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DA8FB90F232DB20095139A /* PreferencesController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,12 +140,11 @@
 		34CF51550DA6F77C00905FB6 /* everyone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = everyone.png; sourceTree = "<group>"; };
 		34CF515B0DA6FA5D00905FB6 /* picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = picture.png; sourceTree = "<group>"; };
 		34D0CFCD0DA4B5EE00D09F5D /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		796227F00F2AF20F00DB1232 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
 		796227F10F2AF20F00DB1232 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		79DA8FA50F2329E10095139A /* toolbar_settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_settings.png; sourceTree = "<group>"; };
-		79DA8FB10F232AEA0095139A /* settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = settings.xib; sourceTree = "<group>"; };
-		79DA8FB80F232DB20095139A /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = ../PreferencesController.h; sourceTree = "<group>"; };
-		79DA8FB90F232DB20095139A /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = ../PreferencesController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,8 +165,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				79DA8FB80F232DB20095139A /* PreferencesController.h */,
-				79DA8FB90F232DB20095139A /* PreferencesController.m */,
+				74762B6F10221C4A00170A19 /* PreferencesController.h */,
+				74762B7010221C4A00170A19 /* PreferencesController.m */,
 				1D3623240D0F684500981E51 /* FriendFeedAppDelegate.h */,
 				1D3623250D0F684500981E51 /* FriendFeedAppDelegate.m */,
 				3488FD660DA4155F004CCDFC /* FeedItem.h */,
@@ -282,7 +280,6 @@
 				346E51880DA4BDCD00D402B9 /* youtube.png */,
 				34D0CFCD0DA4B5EE00D09F5D /* twitter.png */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				79DA8FB10F232AEA0095139A /* settings.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 				34CF51560DA6F77C00905FB6 /* everyone.png in Resources */,
 				34CF515C0DA6FA5D00905FB6 /* picture.png in Resources */,
 				79DA8FA60F2329E10095139A /* toolbar_settings.png in Resources */,
-				79DA8FB20F232AEA0095139A /* settings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,8 +432,8 @@
 				34BAC9090DA99AC800191429 /* DetailViewController.m in Sources */,
 				3478E2FA0DA9E9F3003A078A /* UICellTextView.m in Sources */,
 				3478E3030DA9EBAF003A078A /* UISourceCell.m in Sources */,
-				79DA8FBA0F232DB20095139A /* PreferencesController.m in Sources */,
 				796227F20F2AF20F00DB1232 /* Base64.m in Sources */,
+				74762B7110221C4A00170A19 /* PreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
