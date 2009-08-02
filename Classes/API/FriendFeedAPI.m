@@ -40,6 +40,11 @@
 		[remotekey release];
 }
 
+- (void)updateCredentials:(NSNotification *)notification
+{
+	[self setUsername:[[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"] remoteKey:[[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"]];
+}
+
 - (void)setUsername:(NSString *)name remoteKey:(NSString *)key
 {
 	[self releaseCredentials];

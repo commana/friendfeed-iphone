@@ -24,6 +24,7 @@
 	NSMutableDictionary *receivers;
 }
 
+- (void)updateCredentials:(NSNotification *)notification;
 - (void)releaseCredentials;
 
 @end

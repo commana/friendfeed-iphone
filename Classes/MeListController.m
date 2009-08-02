@@ -19,26 +19,16 @@
 
 @synthesize containerView;
 
-- (id)init
+- (id)initWithModel:(MeList *)model
 {
 	if (self = [super init]) {
 		self.title = @"Me";
 		self.tabBarItem.image = [UIImage imageNamed:@"flickr.png"];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:@"FFSettingsChanged" object:nil];
-		
-		api = [[FriendFeedAPI alloc] init];
-		me = [[MeList alloc] initWithAPI:api];
+		me = [model retain];
 	}
 	return self;
 }
-
--(void) initConnectionForUserName:(NSString *)username remoteKey:(NSString *)remotekey
-{
-	[api setUsername:username remoteKey:remotekey];
-	[me load];
-}
-
 
 // FIXME
 -(void) settingsChange: (NSNotification *)note
@@ -48,9 +38,6 @@
 	if (userName == nil) userName = @"commana";
 	NSString *remoteKey =  [[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"];
 	if (remoteKey == nil) remoteKey = @"yooy";
-	
-	[self initConnectionForUserName:userName remoteKey:remoteKey];
-	
 }
 
 
@@ -118,7 +105,6 @@
 
 - (void)dealloc
 {
-	[api release];
 	[me release];
 	[super dealloc];
 }

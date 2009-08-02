@@ -14,12 +14,13 @@
 
 @interface MeListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-	FriendFeedAPI *api;
 	MeList *me;
 	UIView *containerView;	
 }
 
 @property (nonatomic, retain) UIView *containerView;
+
+- (id)initWithModel:(MeList *)model;
 
 - (FeedItemTableViewCell *)createFeedItemCell;
 
