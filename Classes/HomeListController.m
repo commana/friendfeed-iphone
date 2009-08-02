@@ -6,26 +6,20 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeListController.h"
-#import "FeedItemTableViewCell.h"
+#import "HomeListController.h"
 #import	"FeedItem.h"
-#import "CJSONScanner.h"
-#import "FeedItemTableViewCell.h"
-#import "Base64.h"
-#import "PreferencesController.h"
-#import "FriendFeedAPI.h"
 
-@implementation MeListController
+@implementation HomeListController
 
 @synthesize containerView;
 
-- (id)initWithModel:(MeList *)model
+- (id)initWithModel:(HomeList *)homeListModel
 {
 	if (self = [super init]) {
-		self.title = @"Me";
+		self.title = @"Home";
 		self.tabBarItem.image = [UIImage imageNamed:@"flickr.png"];
 		
-		me = [model retain];
+		model = [homeListModel retain];
 	}
 	return self;
 }
@@ -53,7 +47,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	FeedItemTableViewCell *cell = [self createFeedItemCell];
-	cell.feedItem = [me getFeedItemAtIndex:indexPath.row];
+	cell.feedItem = [model getFeedItemAtIndex:indexPath.row];
 	
 	return cell;
 }
@@ -76,7 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [me getNumberOfItems];
+	return [model getNumberOfItems];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -93,12 +87,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[me loadWithReceiver:self selector:@selector(reloadData)];
+	[model loadWithReceiver:self selector:@selector(reloadData)];
 }
 
 - (void)dealloc
 {
-	[me release];
+	[model release];
 	[super dealloc];
 }
 

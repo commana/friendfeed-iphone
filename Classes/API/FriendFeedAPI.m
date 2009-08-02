@@ -7,6 +7,7 @@
 //
 
 #import "FriendFeedAPI.h"
+#import "CJSONScanner.h"
 
 
 @implementation FriendFeedAPI

@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-#import "MeList.h"
+#import "HomeList.h"
 #import "FeedItemTableViewCell.h"
 
-@interface MeListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface HomeListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-	MeList *me;
+	HomeList *model;
 	UIView *containerView;	
 }
 
 @property (nonatomic, retain) UIView *containerView;
 
-- (id)initWithModel:(MeList *)model;
+- (id)initWithModel:(HomeList *)model;
 
 - (FeedItemTableViewCell *)createFeedItemCell;
 

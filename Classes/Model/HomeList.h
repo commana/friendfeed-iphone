@@ -12,7 +12,7 @@
 #import "FeedItem.h"
 #import "FriendFeedDelegateProtocol.h"
 
-@interface MeList : NSObject <FriendFeedDelegateProtocol>
+@interface HomeList : NSObject <FriendFeedDelegateProtocol>
 {
 	FriendFeedAPI *api;
 	NSMutableArray *feedItems;

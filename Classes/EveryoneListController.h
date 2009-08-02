@@ -13,7 +13,7 @@
 
 @interface EveryoneListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
-	EveryoneList *everyone;
+	EveryoneList *model;
 	UIView *containerView;	
 }
 

@@ -8,8 +8,7 @@
 
 #import "FriendFeedAppDelegate.h"
 #import "EveryoneListController.h"
-#import "MeListController.h"
-#import "FriendsListController.h"
+#import "HomeListController.h"
 #import "PreferencesController.h"
 
 
@@ -21,7 +20,7 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
 	FriendFeedAPI *friendFeedAPI = [[FriendFeedAPI alloc] init];
-	MeList *meList = [[MeList alloc] initWithAPI:friendFeedAPI];
+	HomeList *homeList = [[HomeList alloc] initWithAPI:friendFeedAPI];
 	EveryoneList *everyoneList = [[EveryoneList alloc] initWithAPI:friendFeedAPI];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:friendFeedAPI selector:@selector(updateCredentials:) name:@"FFSettingsChanged" object:nil];
@@ -30,16 +29,10 @@
 	tabBarController = [[UITabBarController alloc] init];
 	NSMutableArray *localViewControllersArray = [[NSMutableArray alloc] initWithCapacity:2];
 	UINavigationController *navigationController;
-	
-	FriendsListController *friendsListController = [[FriendsListController alloc] init];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:friendsListController];
-	[friendsListController release];
-	[localViewControllersArray addObject:navigationController];
-	[navigationController release];
 
-	MeListController *meListController = [(MeListController *)[MeListController alloc] initWithModel:meList];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:meListController];
-	[meListController release];
+	HomeListController *homeListController = [(HomeListController *)[HomeListController alloc] initWithModel:homeList];
+	navigationController = [[UINavigationController alloc] initWithRootViewController:homeListController];
+	[homeListController release];
 	[localViewControllersArray addObject:navigationController];
 	[navigationController release];
 
@@ -70,12 +63,8 @@
 	[self.window makeKeyAndVisible];	
 
 	[everyoneList release];
-	[meList release];
+	[homeList release];
 	[friendFeedAPI release];
-}
-
--(void)changed:(NSNotification *)note{
-	NSLog(@"notified");
 }
 
 - (void)dealloc {

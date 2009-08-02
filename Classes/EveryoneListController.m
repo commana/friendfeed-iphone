@@ -7,23 +7,20 @@
 //
 
 #import "EveryoneListController.h"
-#import "FeedItemTableViewCell.h"
 #import	"FeedItem.h"
-#import "CJSONScanner.h"
-#import "FeedItemTableViewCell.h"
 
 @implementation EveryoneListController
 
 @synthesize containerView;
 
-- (id)initWithModel:(EveryoneList *)model;
+- (id)initWithModel:(EveryoneList *)everyoneListModel;
 {
 	if (self = [super init])
 	{
 		self.title = @"Everyone";
 		self.tabBarItem.image = [UIImage imageNamed:@"yelp.png"]; 
 		
-		everyone = [model retain];
+		model = [everyoneListModel retain];
 	}
 	return self;
 }
@@ -51,7 +48,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	FeedItemTableViewCell *cell = [self createFeedItemCell];
-	cell.feedItem = [everyone getFeedItemAtIndex:indexPath.row];
+	cell.feedItem = [model getFeedItemAtIndex:indexPath.row];
 	
 	return cell;
 }
@@ -74,7 +71,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [everyone getNumberOfItems];
+	return [model getNumberOfItems];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -91,12 +88,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[everyone loadWithReceiver:self selector:@selector(reloadData)];
+	[model loadWithReceiver:self selector:@selector(reloadData)];
 }
 
 - (void)dealloc
 {
-	[everyone release];
+	[model release];
 	[super dealloc];
 }
 

@@ -6,10 +6,10 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeList.h"
+#import "HomeList.h"
 
 
-@implementation MeList
+@implementation HomeList
 
 - (id)initWithAPI:(FriendFeedAPI *)ffapi
 {
