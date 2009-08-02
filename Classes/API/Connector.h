@@ -10,7 +10,8 @@
 
 #import "RequestDataProtocol.h"
 
-@interface Connector : NSObject {
+@interface Connector : NSObject
+{
 	NSMutableURLRequest *request;
 	NSMutableData *receivedData;
 	NSMutableDictionary *connections;

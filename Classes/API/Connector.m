@@ -45,6 +45,8 @@
 {
 	[request setURL:[NSURL URLWithString:url]];
 	[request setHTTPMethod:@"GET"];
+	[request setValue:nil forHTTPHeaderField:@"Authorization"];
+	
 	return [self openConnection];
 }
 

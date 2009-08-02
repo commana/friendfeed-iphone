@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+#import "EveryoneList.h"
+#import "FeedItemTableViewCell.h"
 
-@interface EveryoneListController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-
-	NSMutableData *receivedData;
-	NSMutableArray *feedItems;
+@interface EveryoneListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+	EveryoneList *everyone;
 	UIView *containerView;	
-
 }
 
-@property (retain) NSMutableData *receivedData;
-@property (nonatomic, retain) NSMutableArray *feedItems;
 @property (nonatomic,retain) UIView *containerView;
 
+- (id)initWithModel:(EveryoneList *)model;
+
+- (FeedItemTableViewCell *)createFeedItemCell;
 
 @end

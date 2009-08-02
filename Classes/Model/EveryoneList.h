@@ -1,5 +1,5 @@
 //
-//  MeList.h
+//  EveryoneList.h
 //  FriendFeed
 //
 //  Created by Christoph Thelen on 02.08.09.
@@ -12,7 +12,7 @@
 #import "FeedItem.h"
 #import "FriendFeedDelegateProtocol.h"
 
-@interface MeList : NSObject <FriendFeedDelegateProtocol>
+@interface EveryoneList : NSObject <FriendFeedDelegateProtocol>
 {
 	FriendFeedAPI *api;
 	NSMutableArray *feedItems;
@@ -28,5 +28,5 @@
 
 - (int)getNumberOfItems;
 - (FeedItem *)getFeedItemAtIndex:(int)index;
-
+	
 @end

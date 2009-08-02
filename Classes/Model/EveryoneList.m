@@ -1,15 +1,15 @@
 //
-//  MeList.m
+//  EveryoneList.m
 //  FriendFeed
 //
 //  Created by Christoph Thelen on 02.08.09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "MeList.h"
+#import "EveryoneList.h"
 
 
-@implementation MeList
+@implementation EveryoneList
 
 - (id)initWithAPI:(FriendFeedAPI *)ffapi
 {
@@ -31,12 +31,12 @@
 
 - (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel
 {
-	[api fetchHomeFeed:nil start:0 num:0 receiver:self];
+	[api fetchPublicFeed:nil start:0 num:0 receiver:self];
 	controller = receiver;
 	message = sel;
 }
 
-- (void)receivedHomeFeed:(id)receivedData
+- (void)receivedPublicFeed:(id)receivedData
 {
 	[feedItems removeAllObjects];
 	

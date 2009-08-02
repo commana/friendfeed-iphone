@@ -14,44 +14,17 @@
 
 @implementation EveryoneListController
 
-@synthesize receivedData;
-@synthesize feedItems;
 @synthesize containerView;
 
-- (id)init
+- (id)initWithModel:(EveryoneList *)model;
 {
-	NSString *post = @"";
-	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-
-	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	//NSString *authValue = [NSString stringWithFormat:@"Basic %@", @"c2hhbmV2Om1hcmVzODM3ZGluZXM="];
-	//[request setValue:authValue forHTTPHeaderField:@"Authorization"];
-
-	//[request setURL:[NSURL URLWithString:@"http://friendfeed.com/api/feed/home"]];
-	[request setURL:[NSURL URLWithString:@"http://friendfeed.com/api/feed/public"]];
-	[request setHTTPMethod:@"GET"];
-	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-	[request setHTTPBody:postData];
-	
-	NSURLConnection *conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	if (conn) 
+	if (self = [super init])
 	{
-		receivedData = [[NSMutableData data] retain];
-	} 
-	else 
-	{
-		// inform the user that the download could not be made
-	}	
-
-	if (self = [super init]) {
-		// Initialize your view controller.
 		self.title = @"Everyone";
-		
 		self.tabBarItem.image = [UIImage imageNamed:@"yelp.png"]; 
-		}
+		
+		everyone = [model retain];
+	}
 	return self;
 }
 
@@ -69,7 +42,6 @@
 	[tableView release];
 	
 	self.view = containerView;
-
 }
 
 - (void)reloadData
@@ -78,17 +50,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Create a cell if necessary
-	FeedItemTableViewCell *cell = nil;
+	FeedItemTableViewCell *cell = [self createFeedItemCell];
+	cell.feedItem = [everyone getFeedItemAtIndex:indexPath.row];
+	
+	return cell;
+}
+
+- (FeedItemTableViewCell *)createFeedItemCell
+{
 	CGSize size = CGSizeMake(300, 36);
 	CGRect cellFrame = CGRectMake(0,0,size.width,size.height);
-	cell = [[[FeedItemTableViewCell alloc] initWithFrame:cellFrame] autorelease];
-	
-	// Set up the text for the cell
-	FeedItem *feedItemForRow = [feedItems objectAtIndex:indexPath.row];	
-	cell.feedItem = feedItemForRow;
-	return cell;
-	
+	return [[[FeedItemTableViewCell alloc] initWithFrame:cellFrame] autorelease];	
 }
 
 - (void)tableView:(UITableView *)tableView selectionDidChangeToIndexPath:(NSIndexPath *)newIndexPath fromIndexPath:(NSIndexPath *)oldIndexPath
@@ -102,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [feedItems count];
+	return [everyone getNumberOfItems];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -117,60 +89,14 @@
 	// Release anything that's not essential, such as cached data.
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)viewWillAppear:(BOOL)animated
 {
-    [receivedData setLength:0];
+	[everyone loadWithReceiver:self selector:@selector(reloadData)];
 }
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [receivedData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-	id theObject = NULL;
-	id anObject = NULL;
-
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
-    NSString *aStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-	
-	NSScanner *theScanner = [NSScanner scannerWithString:aStr];
-	[theScanner scanJSONObject:&theObject];
-	
-	NSArray *allKeys = [theObject allKeys];
-	
-	anObject = [theObject objectForKey:@"entries"];
-	
-	self.feedItems = [NSMutableArray array];
-	
-	for (NSDictionary *element in anObject) {
-		NSDictionary *user = [element objectForKey:@"user"];
-		NSString *nickname = [user objectForKey:@"nickname"];
-		NSDictionary *service = [element objectForKey:@"service"];
-		NSString *serviceId = [service objectForKey:@"id"];
-		NSString *serviceName = [service objectForKey:@"name"];
-		NSString *entryTitle = [element objectForKey:@"title"];
-		//NSLog(@"title: %@", entryTitle);
-		
-		FeedItem *feedItem = [[FeedItem alloc] init];
-		feedItem.nickName = nickname;
-		feedItem.title = entryTitle;
-		feedItem.serviceId = serviceId;
-		feedItem.serviceName = serviceName;
-	
-		[feedItems addObject:feedItem];
-		[feedItem release];
-	}
-	
-	[self reloadData];
-}
-
 
 - (void)dealloc
 {
+	[everyone release];
 	[super dealloc];
 }
 

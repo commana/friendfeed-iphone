@@ -11,12 +11,19 @@
 
 @protocol FriendFeedDelegateProtocol <NSObject>
 
+@optional
+
 /*
 Returns the entries the authenticated user would see on their
 FriendFeed homepage - all of their subscriptions and friend-of-a-friend
 entries. Authentication is always required.
 */
 - (void)receivedHomeFeed:(id)feed;
+
+/*
+Returns the most recent public entries on FriendFeed.
+*/
+- (void)receivedPublicFeed:(id)feed;
 
 @end
 

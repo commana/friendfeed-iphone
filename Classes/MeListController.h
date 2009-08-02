@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FriendFeedAPI.h"
 #import "MeList.h"
 #import "FeedItemTableViewCell.h"
 

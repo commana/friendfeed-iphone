@@ -66,6 +66,7 @@
 		740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8E9310246E160054A810 /* FriendFeedAPI.m */; };
 		740A90B31025D1350054A810 /* MeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90B21025D1350054A810 /* MeList.m */; };
 		740A90FD1025D70C0054A810 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90FC1025D70C0054A810 /* FeedItem.m */; };
+		740A91B51025E5A00054A810 /* EveryoneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A91B41025E5A00054A810 /* EveryoneList.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		796227F20F2AF20F00DB1232 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 796227F10F2AF20F00DB1232 /* Base64.m */; };
 /* End PBXBuildFile section */
@@ -153,6 +154,8 @@
 		740A90B21025D1350054A810 /* MeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeList.m; path = Model/MeList.m; sourceTree = "<group>"; };
 		740A90FB1025D70C0054A810 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedItem.h; path = Model/FeedItem.h; sourceTree = "<group>"; };
 		740A90FC1025D70C0054A810 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedItem.m; path = Model/FeedItem.m; sourceTree = "<group>"; };
+		740A91B31025E5A00054A810 /* EveryoneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EveryoneList.h; path = Model/EveryoneList.h; sourceTree = "<group>"; };
+		740A91B41025E5A00054A810 /* EveryoneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EveryoneList.m; path = Model/EveryoneList.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		796227F00F2AF20F00DB1232 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				740A90FC1025D70C0054A810 /* FeedItem.m */,
 				740A90B11025D1350054A810 /* MeList.h */,
 				740A90B21025D1350054A810 /* MeList.m */,
+				740A91B31025E5A00054A810 /* EveryoneList.h */,
+				740A91B41025E5A00054A810 /* EveryoneList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -474,6 +479,7 @@
 				740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */,
 				740A90B31025D1350054A810 /* MeList.m in Sources */,
 				740A90FD1025D70C0054A810 /* FeedItem.m in Sources */,
+				740A91B51025E5A00054A810 /* EveryoneList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

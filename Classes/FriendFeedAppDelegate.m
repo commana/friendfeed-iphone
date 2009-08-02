@@ -22,6 +22,8 @@
 {
 	FriendFeedAPI *friendFeedAPI = [[FriendFeedAPI alloc] init];
 	MeList *meList = [[MeList alloc] initWithAPI:friendFeedAPI];
+	EveryoneList *everyoneList = [[EveryoneList alloc] initWithAPI:friendFeedAPI];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:friendFeedAPI selector:@selector(updateCredentials:) name:@"FFSettingsChanged" object:nil];
 	
 	// Create a tabbar controller and an array to contain the view controllers
@@ -35,13 +37,13 @@
 	[localViewControllersArray addObject:navigationController];
 	[navigationController release];
 
-	MeListController *meListController = [[MeListController alloc] initWithModel:meList];
+	MeListController *meListController = [(MeListController *)[MeListController alloc] initWithModel:meList];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:meListController];
 	[meListController release];
 	[localViewControllersArray addObject:navigationController];
 	[navigationController release];
 
-	EveryoneListController *everyoneListController = [[EveryoneListController alloc] init];
+	EveryoneListController *everyoneListController = [[EveryoneListController alloc] initWithModel:everyoneList];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:everyoneListController];
 	[everyoneListController release];
 	[localViewControllersArray addObject:navigationController];
@@ -67,8 +69,9 @@
 	// Show window
 	[self.window makeKeyAndVisible];	
 
-	[friendFeedAPI release];
+	[everyoneList release];
 	[meList release];
+	[friendFeedAPI release];
 }
 
 -(void)changed:(NSNotification *)note{

@@ -11,6 +11,9 @@
 @protocol FriendFeedProtocol <NSObject>
 
 - (void)setUsername:(NSString *)username remoteKey:(NSString *)remotekey;
+
+@optional
 - (void)fetchHomeFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object;
+- (void)fetchPublicFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object;
 
 @end

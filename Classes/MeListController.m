@@ -30,17 +30,6 @@
 	return self;
 }
 
-// FIXME
--(void) settingsChange: (NSNotification *)note
-{
-	NSLog(@"loading with new param");
-	NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"];
-	if (userName == nil) userName = @"commana";
-	NSString *remoteKey =  [[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"];
-	if (remoteKey == nil) remoteKey = @"yooy";
-}
-
-
 - (void)loadView
 {
     UITableView *tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
@@ -55,7 +44,6 @@
 	[tableView release];
 	
 	self.view = containerView;
-
 }
 
 - (void)reloadData
@@ -101,6 +89,11 @@
 {
 	[super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview.
 	// Release anything that's not essential, such as cached data.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[me loadWithReceiver:self selector:@selector(reloadData)];
 }
 
 - (void)dealloc

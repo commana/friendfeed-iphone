@@ -62,6 +62,16 @@
 	[receivers setObject:object forKey:uuid];
 }
 
+- (void)fetchPublicFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object
+{
+	NSString *url = [NSString stringWithFormat:@"%@%@", FFAPI_URL, @"feed/public"];
+	NSString *uuid = [connector open:url];
+	if (! uuid) return;
+	
+	[apiCalls setObject:[NSNumber numberWithInt:FFAPI_FEED_PUBLIC] forKey:uuid];
+	[receivers setObject:object forKey:uuid];
+}
+
 - (id)createJSONObject:(NSData *)data
 {
 	id jsonObject = NULL;
@@ -90,6 +100,13 @@
 			if ([object respondsToSelector:@selector(receivedHomeFeed:)])
 			{
 				[object performSelector:@selector(receivedHomeFeed:) withObject:jsonObject];
+			}
+			break;
+			
+		case FFAPI_FEED_PUBLIC:
+			if ([object respondsToSelector:@selector(receivedPublicFeed:)])
+			{
+				[object performSelector:@selector(receivedPublicFeed:) withObject:jsonObject];
 			}
 			break;
 			
