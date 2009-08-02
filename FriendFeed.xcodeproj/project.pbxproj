@@ -22,7 +22,6 @@
 		348626B60DA2BFC100908BFC /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 348626AF0DA2BFC100908BFC /* CJSONDeserializer.m */; };
 		348626B70DA2BFC100908BFC /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 348626B10DA2BFC100908BFC /* CJSONScanner.m */; };
 		348626B80DA2BFC100908BFC /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 348626B30DA2BFC100908BFC /* CJSONSerializer.m */; };
-		3488FD680DA4155F004CCDFC /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3488FD670DA4155F004CCDFC /* FeedItem.m */; };
 		3488FDCE0DA41B53004CCDFC /* FeedItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3488FDCD0DA41B53004CCDFC /* FeedItemTableViewCell.m */; };
 		34BAC9090DA99AC800191429 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BAC9080DA99AC800191429 /* DetailViewController.m */; };
 		7402956A10236D7700CE6278 /* amazon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7402954410236D7700CE6278 /* amazon.png */; };
@@ -65,6 +64,8 @@
 		7402958F10236D7700CE6278 /* zooomr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7402956910236D7700CE6278 /* zooomr.png */; };
 		740A8DD6102448D20054A810 /* Connector.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8DD5102448D20054A810 /* Connector.m */; };
 		740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8E9310246E160054A810 /* FriendFeedAPI.m */; };
+		740A90B31025D1350054A810 /* MeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90B21025D1350054A810 /* MeList.m */; };
+		740A90FD1025D70C0054A810 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90FC1025D70C0054A810 /* FeedItem.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		796227F20F2AF20F00DB1232 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 796227F10F2AF20F00DB1232 /* Base64.m */; };
 /* End PBXBuildFile section */
@@ -99,8 +100,6 @@
 		348626B10DA2BFC100908BFC /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
 		348626B20DA2BFC100908BFC /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		348626B30DA2BFC100908BFC /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
-		3488FD660DA4155F004CCDFC /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItem.h; sourceTree = "<group>"; };
-		3488FD670DA4155F004CCDFC /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItem.m; sourceTree = "<group>"; };
 		3488FDCC0DA41B53004CCDFC /* FeedItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedItemTableViewCell.h; sourceTree = "<group>"; };
 		3488FDCD0DA41B53004CCDFC /* FeedItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedItemTableViewCell.m; sourceTree = "<group>"; };
 		34BAC9070DA99AC800191429 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -150,6 +149,10 @@
 		740A8E8E10246C1B0054A810 /* FriendFeedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendFeedProtocol.h; path = API/FriendFeedProtocol.h; sourceTree = "<group>"; };
 		740A8E9210246E160054A810 /* FriendFeedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendFeedAPI.h; path = API/FriendFeedAPI.h; sourceTree = "<group>"; };
 		740A8E9310246E160054A810 /* FriendFeedAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendFeedAPI.m; path = API/FriendFeedAPI.m; sourceTree = "<group>"; };
+		740A90B11025D1350054A810 /* MeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MeList.h; path = Model/MeList.h; sourceTree = "<group>"; };
+		740A90B21025D1350054A810 /* MeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MeList.m; path = Model/MeList.m; sourceTree = "<group>"; };
+		740A90FB1025D70C0054A810 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedItem.h; path = Model/FeedItem.h; sourceTree = "<group>"; };
+		740A90FC1025D70C0054A810 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedItem.m; path = Model/FeedItem.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		796227F00F2AF20F00DB1232 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
@@ -174,13 +177,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				740A90B01025D0FC0054A810 /* Model */,
 				740A8DD3102448940054A810 /* API */,
 				74762B6F10221C4A00170A19 /* PreferencesController.h */,
 				74762B7010221C4A00170A19 /* PreferencesController.m */,
 				1D3623240D0F684500981E51 /* FriendFeedAppDelegate.h */,
 				1D3623250D0F684500981E51 /* FriendFeedAppDelegate.m */,
-				3488FD660DA4155F004CCDFC /* FeedItem.h */,
-				3488FD670DA4155F004CCDFC /* FeedItem.m */,
 				3488FDCC0DA41B53004CCDFC /* FeedItemTableViewCell.h */,
 				3488FDCD0DA41B53004CCDFC /* FeedItemTableViewCell.m */,
 				3473CF520DA609B500728B98 /* EveryoneListController.h */,
@@ -351,6 +353,17 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		740A90B01025D0FC0054A810 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				740A90FB1025D70C0054A810 /* FeedItem.h */,
+				740A90FC1025D70C0054A810 /* FeedItem.m */,
+				740A90B11025D1350054A810 /* MeList.h */,
+				740A90B21025D1350054A810 /* MeList.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -448,7 +461,6 @@
 				348626B60DA2BFC100908BFC /* CJSONDeserializer.m in Sources */,
 				348626B70DA2BFC100908BFC /* CJSONScanner.m in Sources */,
 				348626B80DA2BFC100908BFC /* CJSONSerializer.m in Sources */,
-				3488FD680DA4155F004CCDFC /* FeedItem.m in Sources */,
 				3488FDCE0DA41B53004CCDFC /* FeedItemTableViewCell.m in Sources */,
 				3473CF540DA609B500728B98 /* EveryoneListController.m in Sources */,
 				3473D0640DA6994500728B98 /* MeListController.m in Sources */,
@@ -460,6 +472,8 @@
 				74762B7110221C4A00170A19 /* PreferencesController.m in Sources */,
 				740A8DD6102448D20054A810 /* Connector.m in Sources */,
 				740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */,
+				740A90B31025D1350054A810 /* MeList.m in Sources */,
+				740A90FD1025D70C0054A810 /* FeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

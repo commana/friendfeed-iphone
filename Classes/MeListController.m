@@ -17,26 +17,26 @@
 
 @implementation MeListController
 
-@synthesize feedItems;
 @synthesize containerView;
 
 - (id)init
 {
 	if (self = [super init]) {
-		// Initialize your view controller.
 		self.title = @"Me";
 		self.tabBarItem.image = [UIImage imageNamed:@"flickr.png"];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(settingsChange:) name:@"FFSettingsChanged" object:nil];
+		
+		api = [[FriendFeedAPI alloc] init];
+		me = [[MeList alloc] initWithAPI:api];
 	}
 	return self;
 }
 
 -(void) initConnectionForUserName:(NSString *)username remoteKey:(NSString *)remotekey
 {
-	FriendFeedAPI *ff = [[FriendFeedAPI alloc] init];
-	[ff setUsername:username remoteKey:remotekey];
-	[ff fetchHomeFeed:nil start:0 num:0 receiver:self];
+	[api setUsername:username remoteKey:remotekey];
+	[me load];
 }
 
 
@@ -77,17 +77,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Create a cell if necessary
-	FeedItemTableViewCell *cell = nil;
+	FeedItemTableViewCell *cell = [self createFeedItemCell];
+	cell.feedItem = [me getFeedItemAtIndex:indexPath.row];
+	
+	return cell;
+}
+
+- (FeedItemTableViewCell *)createFeedItemCell
+{
 	CGSize size = CGSizeMake(300, 36);
 	CGRect cellFrame = CGRectMake(0,0,size.width,size.height);
-	cell = [[[FeedItemTableViewCell alloc] initWithFrame:cellFrame] autorelease];
-	
-	// Set up the text for the cell
-	FeedItem *feedItemForRow = [feedItems objectAtIndex:indexPath.row];	
-	cell.feedItem = feedItemForRow;
-	return cell;
-	
+	return [[[FeedItemTableViewCell alloc] initWithFrame:cellFrame] autorelease];	
 }
 
 - (void)tableView:(UITableView *)tableView selectionDidChangeToIndexPath:(NSIndexPath *)newIndexPath fromIndexPath:(NSIndexPath *)oldIndexPath
@@ -101,7 +101,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	return [feedItems count];
+	return [me getNumberOfItems];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -116,44 +116,11 @@
 	// Release anything that's not essential, such as cached data.
 }
 
-- (void)connectionDidFinishLoading:(id)receivedData
-{
-	id anObject = [receivedData objectForKey:@"entries"];
-	
-	self.feedItems = [NSMutableArray array];
-	
-	for (NSDictionary *element in anObject) {
-		NSDictionary *user = [element objectForKey:@"user"];
-		NSString *nickname = [user objectForKey:@"nickname"];
-		NSDictionary *service = [element objectForKey:@"service"];
-		NSString *serviceId = [service objectForKey:@"id"];
-		NSString *serviceName = [service objectForKey:@"name"];
-		NSString *entryTitle = [element objectForKey:@"title"];
-		//NSLog(@"title: %@", entryTitle);
-		
-		FeedItem *feedItem = [[FeedItem alloc] init];
-		feedItem.nickName = nickname;
-		feedItem.title = entryTitle;
-		feedItem.serviceId = serviceId;
-		feedItem.serviceName = serviceName;
-	
-		[feedItems addObject:feedItem];
-		[feedItem release];
-	}
-	
-	[self reloadData];
-}
-
-
 - (void)dealloc
 {
+	[api release];
+	[me release];
 	[super dealloc];
-}
-
-- (void)receivedHomeFeed:(id)data
-{
-	NSLog(@"received home feed");
-	[self connectionDidFinishLoading:data];
 }
 
 @end
