@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FriendFeedDelegateProtocol.h"
 
-@interface MeListController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-
-	NSMutableData *receivedData;
+@interface MeListController : UIViewController <UITableViewDelegate, UITableViewDataSource, FriendFeedDelegateProtocol>
+{
 	NSMutableArray *feedItems;
 	UIView *containerView;	
-
 }
 
-@property (retain) NSMutableData *receivedData;
 @property (nonatomic, retain) NSMutableArray *feedItems;
 @property (nonatomic,retain) UIView *containerView;
 

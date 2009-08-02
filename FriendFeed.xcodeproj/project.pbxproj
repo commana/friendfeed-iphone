@@ -63,6 +63,8 @@
 		7402958D10236D7700CE6278 /* yelp.png in Resources */ = {isa = PBXBuildFile; fileRef = 7402956710236D7700CE6278 /* yelp.png */; };
 		7402958E10236D7700CE6278 /* youtube.png in Resources */ = {isa = PBXBuildFile; fileRef = 7402956810236D7700CE6278 /* youtube.png */; };
 		7402958F10236D7700CE6278 /* zooomr.png in Resources */ = {isa = PBXBuildFile; fileRef = 7402956910236D7700CE6278 /* zooomr.png */; };
+		740A8DD6102448D20054A810 /* Connector.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8DD5102448D20054A810 /* Connector.m */; };
+		740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8E9310246E160054A810 /* FriendFeedAPI.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		796227F20F2AF20F00DB1232 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 796227F10F2AF20F00DB1232 /* Base64.m */; };
 /* End PBXBuildFile section */
@@ -141,6 +143,13 @@
 		7402956710236D7700CE6278 /* yelp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yelp.png; path = Resources/yelp.png; sourceTree = "<group>"; };
 		7402956810236D7700CE6278 /* youtube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = youtube.png; path = Resources/youtube.png; sourceTree = "<group>"; };
 		7402956910236D7700CE6278 /* zooomr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zooomr.png; path = Resources/zooomr.png; sourceTree = "<group>"; };
+		740A8DD4102448D20054A810 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Connector.h; path = API/Connector.h; sourceTree = "<group>"; };
+		740A8DD5102448D20054A810 /* Connector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Connector.m; path = API/Connector.m; sourceTree = "<group>"; };
+		740A8E7710245FE80054A810 /* FriendFeedDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendFeedDelegateProtocol.h; path = API/FriendFeedDelegateProtocol.h; sourceTree = "<group>"; };
+		740A8E7A1024629F0054A810 /* RequestDataProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestDataProtocol.h; path = API/RequestDataProtocol.h; sourceTree = "<group>"; };
+		740A8E8E10246C1B0054A810 /* FriendFeedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendFeedProtocol.h; path = API/FriendFeedProtocol.h; sourceTree = "<group>"; };
+		740A8E9210246E160054A810 /* FriendFeedAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FriendFeedAPI.h; path = API/FriendFeedAPI.h; sourceTree = "<group>"; };
+		740A8E9310246E160054A810 /* FriendFeedAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FriendFeedAPI.m; path = API/FriendFeedAPI.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		796227F00F2AF20F00DB1232 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
@@ -165,6 +174,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				740A8DD3102448940054A810 /* API */,
 				74762B6F10221C4A00170A19 /* PreferencesController.h */,
 				74762B7010221C4A00170A19 /* PreferencesController.m */,
 				1D3623240D0F684500981E51 /* FriendFeedAppDelegate.h */,
@@ -327,6 +337,20 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		740A8DD3102448940054A810 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				740A8E9210246E160054A810 /* FriendFeedAPI.h */,
+				740A8E9310246E160054A810 /* FriendFeedAPI.m */,
+				740A8E7A1024629F0054A810 /* RequestDataProtocol.h */,
+				740A8DD4102448D20054A810 /* Connector.h */,
+				740A8DD5102448D20054A810 /* Connector.m */,
+				740A8E7710245FE80054A810 /* FriendFeedDelegateProtocol.h */,
+				740A8E8E10246C1B0054A810 /* FriendFeedProtocol.h */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -434,6 +458,8 @@
 				3478E3030DA9EBAF003A078A /* UISourceCell.m in Sources */,
 				796227F20F2AF20F00DB1232 /* Base64.m in Sources */,
 				74762B7110221C4A00170A19 /* PreferencesController.m in Sources */,
+				740A8DD6102448D20054A810 /* Connector.m in Sources */,
+				740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

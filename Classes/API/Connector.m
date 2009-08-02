@@ -7,8 +7,17 @@
 //
 
 #import "Connector.h"
+#import "Base64.h"
 
 @implementation Connector
+
++ (NSString *)createUniqueIdentifier
+{
+	CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+	NSString *identifier = (id)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+	CFRelease(uuid);
+	return [identifier autorelease];
+}
 
 - (id)initWithReceiver:(id<RequestDataProtocol>)dataReceiver
 {
@@ -18,6 +27,7 @@
 		receiver = [dataReceiver retain];
 		request = [[NSMutableURLRequest alloc] init];
 		receivedData = [[NSMutableData data] retain];
+		connections = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -27,20 +37,41 @@
 	[request release];
 	[receivedData release];
 	[receiver release];
+	[connections release];
 	[super dealloc];
 }
 
-- (void)open:(NSString *)url
+- (NSString *)open:(NSString *)url
+{
+	[request setURL:[NSURL URLWithString:url]];
+	[request setHTTPMethod:@"GET"];
+	return [self openConnection];
+}
+
+- (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey
 {
 	[request setURL:[NSURL URLWithString:url]];
 	[request setHTTPMethod:@"GET"];
 	
-	NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
-	if (! connection) 
+	NSString *credentials = [NSString stringWithFormat:@"%@:%@", username, remotekey];
+	NSString *authValue = [NSString stringWithFormat:@"Basic %@", [credentials base64Encode]];
+	[request setValue:authValue forHTTPHeaderField:@"Authorization"];
+	
+	return [self openConnection];
+}
+
+- (NSString *)openConnection
+{
+	NSURLConnection *connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+	if (! connection)
 	{
-		[receiver dataHasNotArrived];
-		return;
+		[receiver dataHasNotArrived:nil];
+		return nil;
 	}
+	NSString *uuid = [Connector createUniqueIdentifier];
+	[connections setObject:uuid forKey:[connection description]];
+	
+	return uuid;	
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -55,32 +86,26 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-	[receiver dataHasArrived:receivedData];
+	NSString *uuid = [connections objectForKey:[connection description]];
+	[receiver dataHasArrived:receivedData identifier:uuid];
+	
+	[connections removeObjectForKey:[connection description]];
 	[connection release];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-	[receiver dataHasNotArrived];
+	NSString *uuid = [connections objectForKey:connection];
+	[receiver dataHasNotArrived:uuid];
+	
+	[connections removeObjectForKey:connection];
 	[connection release];
-}
-
-- (void)connection:(NSURLConnection *)connection didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-	
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-	
 }
 
 //NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 
 //NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
 //[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//NSString *authValue = [NSString stringWithFormat:@"Basic %@", @"c2hhbmV2Om1hcmVzODM3ZGluZXM="];
-//[request setValue:authValue forHTTPHeaderField:@"Authorization"];
 
 //[request setURL:[NSURL URLWithString:@"http://friendfeed.com/api/feed/home"]];
 //[request setValue:postLength forHTTPHeaderField:@"Content-Length"];

@@ -136,13 +136,11 @@
     // receivedData is declared as a method instance elsewhere
     NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
     NSString *aStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-    NSLog(aStr);
 	
 	NSScanner *theScanner = [NSScanner scannerWithString:aStr];
 	[theScanner scanJSONObject:&theObject];
 	
 	NSArray *allKeys = [theObject allKeys];
-	NSLog(@"%@", allKeys);
 	
 	anObject = [theObject objectForKey:@"entries"];
 	

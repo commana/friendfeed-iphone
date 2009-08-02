@@ -13,10 +13,15 @@
 @interface Connector : NSObject {
 	NSMutableURLRequest *request;
 	NSMutableData *receivedData;
+	NSMutableDictionary *connections;
 	id<RequestDataProtocol> receiver;
 }
 
 - (id)initWithReceiver:(id<RequestDataProtocol>)dataReceiver;
-- (void)open:(NSString *)url;
+- (NSString *)open:(NSString *)url;
+- (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey;
+- (NSString *)openConnection;
+
++ (NSString *)createUniqueIdentifier;
 
 @end

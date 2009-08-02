@@ -11,8 +11,8 @@
 
 @protocol RequestDataProtocol <NSObject>
 
-- (void)dataHasArrived:(NSData *)receivedData;
-- (void)dataHasNotArrived;
+- (void)dataHasArrived:(NSData *)receivedData identifier:(NSString *)uuid;
+- (void)dataHasNotArrived:(NSString *)uuid;
 
 @end
 

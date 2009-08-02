@@ -13,10 +13,10 @@
 #import "FeedItemTableViewCell.h"
 #import "Base64.h"
 #import "PreferencesController.h"
+#import "FriendFeedAPI.h"
 
 @implementation MeListController
 
-@synthesize receivedData;
 @synthesize feedItems;
 @synthesize containerView;
 
@@ -32,40 +32,17 @@
 	return self;
 }
 
--(void) initConnectionForUserName:(NSString *)userName
-						remoteKey:(NSString *)remoteKey{
-	NSString *post = @"";
-	NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-	
-	NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-	
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
-	
-	NSString *ns = [[NSString stringWithFormat:@"%@:%@", userName, remoteKey] autorelease];
-	NSString *authValue = [NSString stringWithFormat:@"Basic %@", [[ns autorelease] base64Encode]];
-	[request setValue:authValue forHTTPHeaderField:@"Authorization"];
-	
-	NSString *s=[[NSString stringWithString:@"http://friendfeed.com/api/feed/user/"] autorelease];
-	[request setURL:[NSURL URLWithString:[s stringByAppendingString:userName]]];
-	[request setHTTPMethod:@"GET"];
-	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-	[request setHTTPBody:postData];
-	
-	NSURLConnection *conn=[[NSURLConnection alloc] initWithRequest:request delegate:self];
-	if (conn) 
-	{
-		receivedData = [[NSMutableData data] retain];
-	} 
-	else 
-	{
-		// inform the user that the download could not be made
-	}	
+-(void) initConnectionForUserName:(NSString *)username remoteKey:(NSString *)remotekey
+{
+	FriendFeedAPI *ff = [[FriendFeedAPI alloc] init];
+	[ff setUsername:username remoteKey:remotekey];
+	[ff fetchHomeFeed:nil start:0 num:0 receiver:self];
 }
 
 
 // FIXME
--(void) settingsChange: (NSNotification *) note{
+-(void) settingsChange: (NSNotification *)note
+{
 	NSLog(@"loading with new param");
 	NSString *userName = [[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"];
 	if (userName == nil) userName = @"commana";
@@ -139,34 +116,9 @@
 	// Release anything that's not essential, such as cached data.
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)connectionDidFinishLoading:(id)receivedData
 {
-    [receivedData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [receivedData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-	id theObject = NULL;
-	id anObject = NULL;
-
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
-    NSString *aStr = [[NSString alloc] initWithData:receivedData encoding:NSASCIIStringEncoding];
-    NSLog(aStr);
-	
-	NSScanner *theScanner = [NSScanner scannerWithString:aStr];
-	[theScanner scanJSONObject:&theObject];
-	
-	NSArray *allKeys = [theObject allKeys];
-	NSLog(@"%@", allKeys);
-	
-	anObject = [theObject objectForKey:@"entries"];
+	id anObject = [receivedData objectForKey:@"entries"];
 	
 	self.feedItems = [NSMutableArray array];
 	
@@ -195,7 +147,13 @@
 
 - (void)dealloc
 {
-	[receivedData release];
 	[super dealloc];
 }
+
+- (void)receivedHomeFeed:(id)data
+{
+	NSLog(@"received home feed");
+	[self connectionDidFinishLoading:data];
+}
+
 @end

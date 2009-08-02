@@ -18,7 +18,7 @@
 @synthesize window;
 @synthesize tabBarController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {	
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 	NSLog(@"app did finish launching");
 	// Create a tabbar controller and an array to contain the view controllers
 	tabBarController = [[UITabBarController alloc] init];
