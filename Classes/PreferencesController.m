@@ -15,6 +15,12 @@
 	return self;
 }
 
+- (void)viewDidLoad
+{
+	userName.text = [[NSUserDefaults standardUserDefaults] valueForKey:kFFUserName];
+	remoteKey.text = [[NSUserDefaults standardUserDefaults] valueForKey:kFFRemoteKey];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField
 {
 	if (theTextField == userName || theTextField == remoteKey)
@@ -32,9 +38,9 @@
 
 - (IBAction)applySettings
 {
-	[[NSUserDefaults standardUserDefaults] setObject:userName.text forKey:@"FFUserName"];
-	[[NSUserDefaults standardUserDefaults] setObject:remoteKey.text forKey:@"FFRemoteKey"];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"FFSettingsChanged" object:nil];
+	[[NSUserDefaults standardUserDefaults] setObject:userName.text forKey:kFFUserName];
+	[[NSUserDefaults standardUserDefaults] setObject:remoteKey.text forKey:kFFRemoteKey];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kFFSettingsChanged object:nil];
 }
 
 @end

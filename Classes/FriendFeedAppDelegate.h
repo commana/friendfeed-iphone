@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "FeedItem.h"
+
+extern NSString *const kFFUserName;
+extern NSString *const kFFRemoteKey;
+extern NSString *const kFFSettingsChanged;
 
 @interface FriendFeedAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UITabBarController *tabBarController;
 }
-
-//-(IBAction)ShowPreferences:(id)sender;
 
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UITabBarController *tabBarController;

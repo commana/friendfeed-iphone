@@ -12,6 +12,10 @@
 #import "PreferencesController.h"
 
 
+NSString *const kFFUserName = @"FFUserName";
+NSString *const kFFRemoteKey = @"FFRemoteKey";
+NSString *const kFFSettingsChanged = @"FFSettingsChanged";
+
 @implementation FriendFeedAppDelegate
 
 @synthesize window;
@@ -52,7 +56,7 @@
 	tabBarController.viewControllers = localViewControllersArray;
 	[localViewControllersArray release];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"FFSettingsChanged" object:nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:kFFSettingsChanged object:nil];
 	// Create window
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     

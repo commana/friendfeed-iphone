@@ -16,6 +16,9 @@
 #define FFAPI_FEED_HOME   0xff100
 #define FFAPI_FEED_PUBLIC 0xff101
 
+extern NSString *const kFFUserName;
+extern NSString *const kFFRemoteKey;
+extern NSString *const kFFSettingsChanged;
 
 @interface FriendFeedAPI : NSObject <FriendFeedProtocol, RequestDataProtocol>
 {

@@ -43,7 +43,7 @@
 
 - (void)updateCredentials:(NSNotification *)notification
 {
-	[self setUsername:[[NSUserDefaults standardUserDefaults] valueForKey:@"FFUserName"] remoteKey:[[NSUserDefaults standardUserDefaults] valueForKey:@"FFRemoteKey"]];
+	[self setUsername:[[NSUserDefaults standardUserDefaults] valueForKey:kFFUserName] remoteKey:[[NSUserDefaults standardUserDefaults] valueForKey:kFFRemoteKey]];
 }
 
 - (void)setUsername:(NSString *)name remoteKey:(NSString *)key

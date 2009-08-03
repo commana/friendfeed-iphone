@@ -3,6 +3,10 @@
 
 #import "FriendFeedAPI.h"
 
+extern NSString *const kFFUserName;
+extern NSString *const kFFRemoteKey;
+extern NSString *const kFFSettingsChanged;
+
 @interface PreferencesController : UIViewController
 {
     IBOutlet UITextField *remoteKey;
