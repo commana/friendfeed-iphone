@@ -13,6 +13,8 @@
 
 @optional
 
+- (void)connectionFailed;
+
 /*
 Returns the entries the authenticated user would see on their
 FriendFeed homepage - all of their subscriptions and friend-of-a-friend

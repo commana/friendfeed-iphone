@@ -8,25 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FriendFeedAPI.h"
-#import "FeedItem.h"
-#import "FriendFeedDelegateProtocol.h"
+#import "FFList.h"
 
-@interface HomeList : NSObject <FriendFeedDelegateProtocol>
+@interface HomeList : FFList
 {
-	FriendFeedAPI *api;
-	NSMutableArray *feedItems;
-	
-	UIViewController *controller;
-	SEL message;
 }
-
-- (id)initWithAPI:(FriendFeedAPI *)ffapi;
-
-- (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel;
-- (void)addFeedItem:(NSDictionary *)element;
-
-- (int)getNumberOfItems;
-- (FeedItem *)getFeedItemAtIndex:(int)index;
 
 @end

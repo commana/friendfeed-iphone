@@ -67,6 +67,8 @@
 		740A90FD1025D70C0054A810 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90FC1025D70C0054A810 /* FeedItem.m */; };
 		740A91B51025E5A00054A810 /* EveryoneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A91B41025E5A00054A810 /* EveryoneList.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
+		748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 748711EE10275B7500420DA6 /* FFURLConnection.m */; };
+		748712CF1027674900420DA6 /* FFList.m in Sources */ = {isa = PBXBuildFile; fileRef = 748712CE1027674900420DA6 /* FFList.m */; };
 		74DC754A1026A5E1008E8823 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DC75491026A5E1008E8823 /* Base64.m */; };
 		74DC75611026A662008E8823 /* settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74DC75601026A662008E8823 /* settings.xib */; };
 /* End PBXBuildFile section */
@@ -156,6 +158,10 @@
 		740A91B41025E5A00054A810 /* EveryoneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EveryoneList.m; path = Model/EveryoneList.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		748711ED10275B7500420DA6 /* FFURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFURLConnection.h; path = API/FFURLConnection.h; sourceTree = "<group>"; };
+		748711EE10275B7500420DA6 /* FFURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFURLConnection.m; path = API/FFURLConnection.m; sourceTree = "<group>"; };
+		748712CD1027674900420DA6 /* FFList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFList.h; path = API/FFList.h; sourceTree = "<group>"; };
+		748712CE1027674900420DA6 /* FFList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFList.m; path = API/FFList.m; sourceTree = "<group>"; };
 		74DC75481026A5E1008E8823 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = API/Base64.h; sourceTree = "<group>"; };
 		74DC75491026A5E1008E8823 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = API/Base64.m; sourceTree = "<group>"; };
 		74DC75601026A662008E8823 /* settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = settings.xib; sourceTree = "<group>"; };
@@ -350,6 +356,8 @@
 				740A8DD5102448D20054A810 /* Connector.m */,
 				740A8E7710245FE80054A810 /* FriendFeedDelegateProtocol.h */,
 				740A8E8E10246C1B0054A810 /* FriendFeedProtocol.h */,
+				748711ED10275B7500420DA6 /* FFURLConnection.h */,
+				748711EE10275B7500420DA6 /* FFURLConnection.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -363,6 +371,8 @@
 				740A90B21025D1350054A810 /* HomeList.m */,
 				740A91B31025E5A00054A810 /* EveryoneList.h */,
 				740A91B41025E5A00054A810 /* EveryoneList.m */,
+				748712CD1027674900420DA6 /* FFList.h */,
+				748712CE1027674900420DA6 /* FFList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -478,6 +488,8 @@
 				740A90FD1025D70C0054A810 /* FeedItem.m in Sources */,
 				740A91B51025E5A00054A810 /* EveryoneList.m in Sources */,
 				74DC754A1026A5E1008E8823 /* Base64.m in Sources */,
+				748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */,
+				748712CF1027674900420DA6 /* FFList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

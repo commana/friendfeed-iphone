@@ -32,4 +32,6 @@ extern NSString *const kFFSettingsChanged;
 - (void)updateCredentials:(NSNotification *)notification;
 - (void)releaseCredentials;
 
+- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType;
+
 @end

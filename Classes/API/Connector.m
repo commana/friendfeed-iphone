@@ -8,16 +8,9 @@
 
 #import "Connector.h"
 #import "Base64.h"
+#import "FFURLConnection.h"
 
 @implementation Connector
-
-+ (NSString *)createUniqueIdentifier
-{
-	CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
-	NSString *identifier = (id)CFUUIDCreateString(kCFAllocatorDefault, uuid);
-	CFRelease(uuid);
-	return [identifier autorelease];
-}
 
 - (id)initWithReceiver:(id<RequestDataProtocol>)dataReceiver
 {
@@ -27,7 +20,6 @@
 		receiver = [dataReceiver retain];
 		request = [[NSMutableURLRequest alloc] init];
 		receivedData = [[NSMutableData data] retain];
-		connections = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -37,14 +29,13 @@
 	[request release];
 	[receivedData release];
 	[receiver release];
-	[connections release];
 	[super dealloc];
 }
 
 - (NSString *)open:(NSString *)url
 {
-	[request setURL:[NSURL URLWithString:url]];
-	[request setHTTPMethod:@"GET"];
+	[self setUpRequest:url];
+	
 	[request setValue:nil forHTTPHeaderField:@"Authorization"];
 	
 	return [self openConnection];
@@ -52,8 +43,7 @@
 
 - (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey
 {
-	[request setURL:[NSURL URLWithString:url]];
-	[request setHTTPMethod:@"GET"];
+	[self setUpRequest:url];
 	
 	NSString *credentials = [NSString stringWithFormat:@"%@:%@", username, remotekey];
 	NSString *authValue = [NSString stringWithFormat:@"Basic %@", [credentials base64Encode]];
@@ -62,45 +52,44 @@
 	return [self openConnection];
 }
 
+- (void)setUpRequest:(NSString *)url
+{
+	[request setURL:[NSURL URLWithString:url]];
+	[request setHTTPMethod:@"GET"];
+}
+
 - (NSString *)openConnection
 {
-	NSURLConnection *connection = [[NSURLConnection connectionWithRequest:request delegate:self] retain];
+	FFURLConnection *connection = [[FFURLConnection alloc] initWithRequest:request delegate:self];
 	if (! connection)
 	{
+		NSLog(@"Failed to create NSURLConnection object.");
 		[receiver dataHasNotArrived:nil];
 		return nil;
 	}
-	NSString *uuid = [Connector createUniqueIdentifier];
-	[connections setObject:uuid forKey:[connection description]];
-	
-	return uuid;	
+	return [connection uuid];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+- (void)connection:(FFURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     [receivedData setLength:0];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)connection:(FFURLConnection *)connection didReceiveData:(NSData *)data
 {
     [receivedData appendData:data];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+- (void)connectionDidFinishLoading:(FFURLConnection *)connection
 {
-	NSString *uuid = [connections objectForKey:[connection description]];
-	[receiver dataHasArrived:receivedData identifier:uuid];
-	
-	[connections removeObjectForKey:[connection description]];
+	[receiver dataHasArrived:receivedData identifier:[connection uuid]];
 	[connection release];
 }
 
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+- (void)connection:(FFURLConnection *)connection didFailWithError:(NSError *)error
 {
-	NSString *uuid = [connections objectForKey:connection];
-	[receiver dataHasNotArrived:uuid];
-	
-	[connections removeObjectForKey:connection];
+	NSLog(@"FFURLConnection %@ didFailWithError: %@", [connection description], [error description]);
+	[receiver dataHasNotArrived:[connection uuid]];
 	[connection release];
 }
 

@@ -14,15 +14,15 @@
 {
 	NSMutableURLRequest *request;
 	NSMutableData *receivedData;
-	NSMutableDictionary *connections;
 	id<RequestDataProtocol> receiver;
 }
 
 - (id)initWithReceiver:(id<RequestDataProtocol>)dataReceiver;
+
 - (NSString *)open:(NSString *)url;
 - (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey;
 - (NSString *)openConnection;
 
-+ (NSString *)createUniqueIdentifier;
+- (void)setUpRequest:(NSString *)url;
 
 @end

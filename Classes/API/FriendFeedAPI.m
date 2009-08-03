@@ -55,22 +55,27 @@
 
 - (void)fetchHomeFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object
 {
-	NSString *url = [NSString stringWithFormat:@"%@%@", FFAPI_URL, @"feed/home"];
-	NSString *uuid = [connector open:url username:username remoteKey:remotekey];
-	if (! uuid) return;
-	
-	[apiCalls setObject:[NSNumber numberWithInt:FFAPI_FEED_HOME] forKey:uuid];
-	[receivers setObject:object forKey:uuid];
+	[self fetchFeed:@"feed/home" receiver:object feedType:FFAPI_FEED_HOME];
 }
 
 - (void)fetchPublicFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object
 {
-	NSString *url = [NSString stringWithFormat:@"%@%@", FFAPI_URL, @"feed/public"];
+	[self fetchFeed:@"feed/public" receiver:object feedType:FFAPI_FEED_PUBLIC];
+}
+
+- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType
+{
+	NSString *url = [NSString stringWithFormat:@"%@%@", FFAPI_URL, urlPart];
 	NSString *uuid = [connector open:url];
-	if (! uuid) return;
+	if (! uuid)
+	{
+		NSLog(@"Could not open connection.");
+		[object performSelector:@selector(connectionFailed)];
+		return;
+	}
 	
-	[apiCalls setObject:[NSNumber numberWithInt:FFAPI_FEED_PUBLIC] forKey:uuid];
-	[receivers setObject:object forKey:uuid];
+	[apiCalls setObject:[NSNumber numberWithInt:feedType] forKey:uuid];
+	[receivers setObject:object forKey:uuid];	
 }
 
 - (id)createJSONObject:(NSData *)data
@@ -124,9 +129,12 @@
 	NSLog(@"%@: error occured", uuid);
 	if (! uuid)
 	{
-		// connection failed!
+		// connection failed, but receiver has already been informed.
 		return;
 	}
+	id object = [receivers objectForKey:uuid];
+	[object performSelector:@selector(connectionFailed)];
+	
 	[apiCalls removeObjectForKey:uuid];
 	[receivers removeObjectForKey:uuid];
 }

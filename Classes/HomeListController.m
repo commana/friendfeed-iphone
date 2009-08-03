@@ -42,7 +42,16 @@
 
 - (void)reloadData
 {
-	[(UITableView *)self.view reloadData];
+	if (model.errorOccured)
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed loading feed" message:@"Check your internet connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
+	else
+	{
+		[(UITableView *)self.view reloadData];
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
