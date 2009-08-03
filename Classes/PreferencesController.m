@@ -15,6 +15,15 @@
 	return self;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField
+{
+	if (theTextField == userName || theTextField == remoteKey)
+	{
+		[theTextField resignFirstResponder];
+	}
+	return YES;
+}
+
 - (void)dealloc
 {
 	[api release];
@@ -23,7 +32,9 @@
 
 - (IBAction)applySettings
 {
-    NSLog(@"Username: %@, remote key: %@", userName, remoteKey);
+	[[NSUserDefaults standardUserDefaults] setObject:userName.text forKey:@"FFUserName"];
+	[[NSUserDefaults standardUserDefaults] setObject:remoteKey.text forKey:@"FFRemoteKey"];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"FFSettingsChanged" object:nil];
 }
 
 @end
