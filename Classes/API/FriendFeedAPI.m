@@ -122,6 +122,11 @@
 - (void)dataHasNotArrived:(NSString *)uuid
 {
 	NSLog(@"%@: error occured", uuid);
+	if (! uuid)
+	{
+		// connection failed!
+		return;
+	}
 	[apiCalls removeObjectForKey:uuid];
 	[receivers removeObjectForKey:uuid];
 }

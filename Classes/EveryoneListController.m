@@ -18,7 +18,7 @@
 	if (self = [super init])
 	{
 		self.title = @"Everyone";
-		self.tabBarItem.image = [UIImage imageNamed:@"yelp.png"]; 
+		self.tabBarItem.image = [UIImage imageNamed:@"yelp.png"];
 		
 		model = [everyoneListModel retain];
 	}

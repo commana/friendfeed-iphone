@@ -42,7 +42,7 @@
 	[localViewControllersArray addObject:navigationController];
 	[navigationController release];
 	
-	PreferencesController *preferencesController = [[PreferencesController alloc] init];
+	PreferencesController *preferencesController = [[PreferencesController alloc] initWithAPI:friendFeedAPI];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:preferencesController];
 	[preferencesController release];
 	[localViewControllersArray addObject:navigationController];
