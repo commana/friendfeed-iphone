@@ -7,7 +7,6 @@
 //
 
 #import "FriendFeedAppDelegate.h"
-#import "EveryoneListController.h"
 #import "HomeListController.h"
 #import "PreferencesController.h"
 
@@ -25,7 +24,6 @@ NSString *const kFFSettingsChanged = @"FFSettingsChanged";
 {
 	FriendFeedAPI *friendFeedAPI = [[FriendFeedAPI alloc] init];
 	HomeList *homeList = [[HomeList alloc] initWithAPI:friendFeedAPI];
-	EveryoneList *everyoneList = [[EveryoneList alloc] initWithAPI:friendFeedAPI];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:friendFeedAPI selector:@selector(updateCredentials:) name:@"FFSettingsChanged" object:nil];
 	
@@ -37,12 +35,6 @@ NSString *const kFFSettingsChanged = @"FFSettingsChanged";
 	HomeListController *homeListController = [(HomeListController *)[HomeListController alloc] initWithModel:homeList];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:homeListController];
 	[homeListController release];
-	[localViewControllersArray addObject:navigationController];
-	[navigationController release];
-
-	EveryoneListController *everyoneListController = [[EveryoneListController alloc] initWithModel:everyoneList];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:everyoneListController];
-	[everyoneListController release];
 	[localViewControllersArray addObject:navigationController];
 	[navigationController release];
 	
@@ -65,8 +57,7 @@ NSString *const kFFSettingsChanged = @"FFSettingsChanged";
 
 	// Show window
 	[self.window makeKeyAndVisible];	
-
-	[everyoneList release];
+	
 	[homeList release];
 	[friendFeedAPI release];
 }

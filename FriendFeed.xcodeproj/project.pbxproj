@@ -12,7 +12,6 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		3473CF540DA609B500728B98 /* EveryoneListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3473CF530DA609B500728B98 /* EveryoneListController.m */; };
 		3473D0640DA6994500728B98 /* HomeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3473D0630DA6994500728B98 /* HomeListController.m */; };
 		3478E2FA0DA9E9F3003A078A /* UICellTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3478E2F90DA9E9F3003A078A /* UICellTextView.m */; };
 		3478E3030DA9EBAF003A078A /* UISourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3478E3020DA9EBAF003A078A /* UISourceCell.m */; };
@@ -65,7 +64,6 @@
 		740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A8E9310246E160054A810 /* FriendFeedAPI.m */; };
 		740A90B31025D1350054A810 /* HomeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90B21025D1350054A810 /* HomeList.m */; };
 		740A90FD1025D70C0054A810 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90FC1025D70C0054A810 /* FeedItem.m */; };
-		740A91B51025E5A00054A810 /* EveryoneList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A91B41025E5A00054A810 /* EveryoneList.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 748711EE10275B7500420DA6 /* FFURLConnection.m */; };
 		748712CF1027674900420DA6 /* FFList.m in Sources */ = {isa = PBXBuildFile; fileRef = 748712CE1027674900420DA6 /* FFList.m */; };
@@ -82,8 +80,6 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* FriendFeed_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendFeed_Prefix.pch; sourceTree = "<group>"; };
-		3473CF520DA609B500728B98 /* EveryoneListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EveryoneListController.h; sourceTree = "<group>"; };
-		3473CF530DA609B500728B98 /* EveryoneListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EveryoneListController.m; sourceTree = "<group>"; };
 		3473D0620DA6994500728B98 /* HomeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListController.h; sourceTree = "<group>"; };
 		3473D0630DA6994500728B98 /* HomeListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListController.m; sourceTree = "<group>"; };
 		3478E2F80DA9E9F3003A078A /* UICellTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICellTextView.h; sourceTree = "<group>"; };
@@ -154,8 +150,6 @@
 		740A90B21025D1350054A810 /* HomeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeList.m; path = Model/HomeList.m; sourceTree = "<group>"; };
 		740A90FB1025D70C0054A810 /* FeedItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedItem.h; path = Model/FeedItem.h; sourceTree = "<group>"; };
 		740A90FC1025D70C0054A810 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedItem.m; path = Model/FeedItem.m; sourceTree = "<group>"; };
-		740A91B31025E5A00054A810 /* EveryoneList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EveryoneList.h; path = Model/EveryoneList.h; sourceTree = "<group>"; };
-		740A91B41025E5A00054A810 /* EveryoneList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EveryoneList.m; path = Model/EveryoneList.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		748711ED10275B7500420DA6 /* FFURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFURLConnection.h; path = API/FFURLConnection.h; sourceTree = "<group>"; };
@@ -193,8 +187,6 @@
 				1D3623250D0F684500981E51 /* FriendFeedAppDelegate.m */,
 				3488FDCC0DA41B53004CCDFC /* FeedItemTableViewCell.h */,
 				3488FDCD0DA41B53004CCDFC /* FeedItemTableViewCell.m */,
-				3473CF520DA609B500728B98 /* EveryoneListController.h */,
-				3473CF530DA609B500728B98 /* EveryoneListController.m */,
 				3473D0620DA6994500728B98 /* HomeListController.h */,
 				3473D0630DA6994500728B98 /* HomeListController.m */,
 				34BAC9070DA99AC800191429 /* DetailViewController.h */,
@@ -369,8 +361,6 @@
 				740A90FC1025D70C0054A810 /* FeedItem.m */,
 				740A90B11025D1350054A810 /* HomeList.h */,
 				740A90B21025D1350054A810 /* HomeList.m */,
-				740A91B31025E5A00054A810 /* EveryoneList.h */,
-				740A91B41025E5A00054A810 /* EveryoneList.m */,
 				748712CD1027674900420DA6 /* FFList.h */,
 				748712CE1027674900420DA6 /* FFList.m */,
 			);
@@ -476,7 +466,6 @@
 				348626B70DA2BFC100908BFC /* CJSONScanner.m in Sources */,
 				348626B80DA2BFC100908BFC /* CJSONSerializer.m in Sources */,
 				3488FDCE0DA41B53004CCDFC /* FeedItemTableViewCell.m in Sources */,
-				3473CF540DA609B500728B98 /* EveryoneListController.m in Sources */,
 				3473D0640DA6994500728B98 /* HomeListController.m in Sources */,
 				34BAC9090DA99AC800191429 /* DetailViewController.m in Sources */,
 				3478E2FA0DA9E9F3003A078A /* UICellTextView.m in Sources */,
@@ -486,7 +475,6 @@
 				740A8E9410246E160054A810 /* FriendFeedAPI.m in Sources */,
 				740A90B31025D1350054A810 /* HomeList.m in Sources */,
 				740A90FD1025D70C0054A810 /* FeedItem.m in Sources */,
-				740A91B51025E5A00054A810 /* EveryoneList.m in Sources */,
 				74DC754A1026A5E1008E8823 /* Base64.m in Sources */,
 				748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */,
 				748712CF1027674900420DA6 /* FFList.m in Sources */,
