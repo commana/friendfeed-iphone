@@ -64,7 +64,7 @@
 	if (! connection)
 	{
 		NSLog(@"Failed to create NSURLConnection object.");
-		[receiver dataHasNotArrived:nil];
+		[receiver dataHasNotArrived:nil error:nil];
 		return nil;
 	}
 	return [connection uuid];
@@ -89,7 +89,7 @@
 - (void)connection:(FFURLConnection *)connection didFailWithError:(NSError *)error
 {
 	NSLog(@"FFURLConnection %@ didFailWithError: %@", [connection description], [error description]);
-	[receiver dataHasNotArrived:[connection uuid]];
+	[receiver dataHasNotArrived:[connection uuid] error:error];
 	[connection release];
 }
 

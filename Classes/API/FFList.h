@@ -19,10 +19,13 @@
 	
 	UIViewController *controller;
 	SEL message;
+	
 	BOOL errorOccured;
+	NSString *errorMessage;
 }
 
 @property (nonatomic) BOOL errorOccured;
+@property (nonatomic, retain) NSString *errorMessage;
 
 - (id)initWithAPI:(FriendFeedAPI *)ffapi;
 

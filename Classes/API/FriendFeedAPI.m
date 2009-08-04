@@ -124,7 +124,7 @@
 	[receivers removeObjectForKey:uuid];
 }
 
-- (void)dataHasNotArrived:(NSString *)uuid
+- (void)dataHasNotArrived:(NSString *)uuid error:(NSError *)error
 {
 	NSLog(@"%@: error occured", uuid);
 	if (! uuid)
@@ -132,6 +132,12 @@
 		// connection failed, but receiver has already been informed.
 		return;
 	}
+
+	if ([error code] == -1009)
+	{
+		// no internet connection
+	}
+	
 	id object = [receivers objectForKey:uuid];
 	[object performSelector:@selector(connectionFailed)];
 	

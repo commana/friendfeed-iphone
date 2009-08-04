@@ -13,7 +13,7 @@
 
 @optional
 
-- (void)connectionFailed;
+- (void)connectionFailed:(NSError *)error;
 
 /*
 Returns the entries the authenticated user would see on their
