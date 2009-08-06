@@ -45,7 +45,7 @@
 	UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] 
 									 initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
 									 target:self
-									 action:@selector(viewWillAppear:)];
+									 action:@selector(forceReload)];
 	
 	self.navigationItem.rightBarButtonItem = reloadButton;
 	
@@ -109,6 +109,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	[model loadWithReceiver:self selector:@selector(reloadData:)];
+}
+
+- (void)forceReload
+{
+	model.errorOccured = NO;
+	[self viewWillAppear:NO];
 }
 
 - (void)dealloc
