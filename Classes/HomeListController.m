@@ -40,11 +40,23 @@
 	self.view = containerView;
 }
 
-- (void)reloadData
+- (void)viewDidLoad
 {
-	if (model.errorOccured)
+	UIBarButtonItem *reloadButton = [[UIBarButtonItem alloc] 
+									 initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+									 target:self
+									 action:@selector(viewWillAppear:)];
+	
+	self.navigationItem.rightBarButtonItem = reloadButton;
+	
+	[reloadButton release];
+}
+
+- (void)reloadData:(NSString *)error
+{
+	if (error)
 	{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed loading feed" message:@"Check your internet connection" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed loading feed" message:error delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}
@@ -96,7 +108,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	[model loadWithReceiver:self selector:@selector(reloadData)];
+	[model loadWithReceiver:self selector:@selector(reloadData:)];
 }
 
 - (void)dealloc

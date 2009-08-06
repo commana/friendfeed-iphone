@@ -139,7 +139,7 @@
 	}
 	
 	id object = [receivers objectForKey:uuid];
-	[object performSelector:@selector(connectionFailed)];
+	[object performSelector:@selector(connectionFailed:) withObject:error];
 	
 	[apiCalls removeObjectForKey:uuid];
 	[receivers removeObjectForKey:uuid];

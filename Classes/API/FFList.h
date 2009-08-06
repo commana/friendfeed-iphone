@@ -25,7 +25,6 @@
 }
 
 @property (nonatomic) BOOL errorOccured;
-@property (nonatomic, retain) NSString *errorMessage;
 
 - (id)initWithAPI:(FriendFeedAPI *)ffapi;
 

@@ -12,7 +12,6 @@
 @implementation FFList
 
 @synthesize errorOccured;
-@synthesize errorMessage;
 
 - (id)initWithAPI:(FriendFeedAPI *)ffapi
 {
@@ -40,10 +39,12 @@
 
 - (void)connectionFailed:(NSError *)error
 {
-	self.errorOccured = YES;
-	self.errorMessage = [error localizedDescription];
 	// maybe creating error-FeedItem is a better solution...
-	[controller performSelector:message];
+	if (! self.errorOccured)
+	{
+		self.errorOccured = YES;
+		[controller performSelector:message withObject:[error localizedDescription]];
+	}
 }
 
 - (void)addFeedItem:(NSDictionary *)element
