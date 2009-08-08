@@ -63,7 +63,7 @@
 	FFURLConnection *connection = [[FFURLConnection alloc] initWithRequest:request delegate:self];
 	if (! connection)
 	{
-		NSLog(@"Failed to create NSURLConnection object.");
+		NSLog(@"Failed to create FFURLConnection object.");
 		[receiver dataHasNotArrived:nil error:nil];
 		return nil;
 	}

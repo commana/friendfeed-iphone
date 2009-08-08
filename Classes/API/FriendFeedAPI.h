@@ -32,6 +32,7 @@ extern NSString *const kFFSettingsChanged;
 - (void)updateCredentials:(NSNotification *)notification;
 - (void)releaseCredentials;
 
-- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType;
+- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType authenticate:(BOOL)needsAuthentication;
+- (void)informClient:(id)object method:(SEL)apiMethod withObject:jsonObject;
 
 @end

@@ -91,13 +91,21 @@
 	self.errorOccured = NO;
 	[feedItems removeAllObjects];
 	
+	NSString *errorCode = [receivedData objectForKey:@"errorCode"];
+	if (errorCode)
+	{
+		self.errorOccured = YES;
+		[controller performSelector:message withObject:errorCode];
+		return;
+	}
+	
 	id anObject = [receivedData objectForKey:@"entries"];
 	
 	for (NSDictionary *element in anObject)
 	{
 		[self addFeedItem:element];
 	}
-	[controller performSelector:message];
+	[controller performSelector:message withObject:nil];
 }
 
 @end

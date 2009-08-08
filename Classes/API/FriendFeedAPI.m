@@ -55,18 +55,20 @@
 
 - (void)fetchHomeFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object
 {
-	[self fetchFeed:@"feed/home" receiver:object feedType:FFAPI_FEED_HOME];
+	[self fetchFeed:@"feed/home" receiver:object feedType:FFAPI_FEED_HOME authenticate:YES];
 }
 
 - (void)fetchPublicFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object
 {
-	[self fetchFeed:@"feed/public" receiver:object feedType:FFAPI_FEED_PUBLIC];
+	[self fetchFeed:@"feed/public" receiver:object feedType:FFAPI_FEED_PUBLIC authenticate:NO];
 }
 
-- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType
+- (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType authenticate:(BOOL)needsAuthentication
 {
 	NSString *url = [NSString stringWithFormat:@"%@%@", FFAPI_URL, urlPart];
-	NSString *uuid = [connector open:url];
+	NSString *uuid = (needsAuthentication)
+							? [connector open:url username:username remoteKey:remotekey]
+							: [connector open:url];
 	if (! uuid)
 	{
 		NSLog(@"Could not open connection.");
@@ -98,22 +100,17 @@
 	
 	id jsonObject = [self createJSONObject:data];
 	
+	id client = [receivers objectForKey:uuid];
 	int api = [[apiCalls objectForKey:uuid] intValue];
-	id object = [receivers objectForKey:uuid];
+	
 	switch (api)
 	{
 		case FFAPI_FEED_HOME:
-			if ([object respondsToSelector:@selector(receivedHomeFeed:)])
-			{
-				[object performSelector:@selector(receivedHomeFeed:) withObject:jsonObject];
-			}
+			[self informClient:client method:@selector(receivedHomeFeed:) withObject:jsonObject];
 			break;
 			
 		case FFAPI_FEED_PUBLIC:
-			if ([object respondsToSelector:@selector(receivedPublicFeed:)])
-			{
-				[object performSelector:@selector(receivedPublicFeed:) withObject:jsonObject];
-			}
+			[self informClient:client method:@selector(receivedPublicFeed:) withObject:jsonObject];
 			break;
 			
 		default:
@@ -122,6 +119,14 @@
 	}
 	[apiCalls removeObjectForKey:uuid];
 	[receivers removeObjectForKey:uuid];
+}
+
+- (void)informClient:(id)client method:(SEL)apiMethod withObject:jsonObject
+{
+	if ([client respondsToSelector:apiMethod])
+	{
+		[client performSelector:apiMethod withObject:jsonObject];
+	}
 }
 
 - (void)dataHasNotArrived:(NSString *)uuid error:(NSError *)error
