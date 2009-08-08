@@ -12,7 +12,8 @@ extern NSString *const kFFUserName;
 extern NSString *const kFFRemoteKey;
 extern NSString *const kFFSettingsChanged;
 
-@interface FriendFeedAppDelegate : NSObject <UIApplicationDelegate> {
+@interface FriendFeedAppDelegate : NSObject <UIApplicationDelegate>
+{
     UIWindow *window;
 	UITabBarController *tabBarController;
 }

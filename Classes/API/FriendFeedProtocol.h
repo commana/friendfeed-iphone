@@ -16,4 +16,6 @@
 - (void)fetchHomeFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object;
 - (void)fetchPublicFeed:(NSString *)service start:(int)start num:(int)num receiver:(id)object;
 
+- (void)fetchProfilePicture:(NSString *)profile receiver:(id)object;
+
 @end

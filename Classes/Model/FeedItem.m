@@ -11,10 +11,43 @@
 
 @implementation FeedItem
 
-@synthesize serviceId;
-@synthesize serviceName;
-@synthesize nickName;
-@synthesize title;
-@synthesize comments;
+@synthesize feedId;
+@synthesize name;
+@synthesize body;
+@synthesize profilePicture;
+@synthesize cell;
+
+- (id)initWithAPI:(FriendFeedAPI *)friendFeedAPI
+{
+	self = [super init];
+	if (self)
+	{
+		api = [friendFeedAPI retain];
+	}
+	return self;
+}
+
+- (void)loadImage:(NewFeedItemTableViewCell *)feedCell
+{
+	[api fetchProfilePicture:self.feedId receiver:self];
+	self.cell = feedCell;
+}
+
+- (void)receivedImage:(id)image
+{
+	self.profilePicture = image;
+	cell.profilePictureView.image = image;
+}
+
+- (void)connectionFailed:(NSError *)error
+{
+	NSLog(@"Error occured: %@", [error localizedDescription]);
+}
+
+- (void)dealloc
+{
+	[api release];
+	[super dealloc];
+}
 
 @end

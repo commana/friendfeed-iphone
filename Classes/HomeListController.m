@@ -12,6 +12,7 @@
 @implementation HomeListController
 
 @synthesize containerView;
+@synthesize cell;
 
 - (id)initWithModel:(HomeList *)homeListModel
 {
@@ -29,10 +30,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] style:UITableViewStylePlain];
 	
     tableView.delegate = self;
-	tableView.dataSource = self;
-	tableView.rowHeight = 48.0;
-	tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	tableView.sectionHeaderHeight = 0;
+	tableView.dataSource = model;
 
 	self.containerView = tableView;
 	[tableView release];
@@ -66,32 +64,13 @@
 	}
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	FeedItemTableViewCell *cell = [self createFeedItemCell];
-	cell.feedItem = [model getFeedItemAtIndex:indexPath.row];
-	
-	return cell;
-}
-
-- (FeedItemTableViewCell *)createFeedItemCell
-{
-	CGSize size = CGSizeMake(300, 36);
-	CGRect cellFrame = CGRectMake(0,0,size.width,size.height);
-	return [[[FeedItemTableViewCell alloc] initWithFrame:cellFrame] autorelease];	
-}
-
 - (void)tableView:(UITableView *)tableView selectionDidChangeToIndexPath:(NSIndexPath *)newIndexPath fromIndexPath:(NSIndexPath *)oldIndexPath
 {
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
-{
-	return [model getNumberOfItems];
+	return 75;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

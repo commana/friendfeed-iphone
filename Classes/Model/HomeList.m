@@ -11,10 +11,33 @@
 
 @implementation HomeList
 
-- (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel
+@synthesize feedCell;
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
-	[super loadWithReceiver:receiver selector:sel];
-	[api fetchHomeFeed:nil start:0 num:0 receiver:self];
+	return [self getNumberOfItems];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *identifier = @"FeedItemCell";
+	
+	NewFeedItemTableViewCell *cell = (NewFeedItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
+	if (! cell)
+	{
+		cell = [self loadCell];
+	}
+	FeedItem *item = [self getFeedItemAtIndex:indexPath.row];
+	[item loadImage:cell];
+	
+	return cell;
+}
+
+- (NewFeedItemTableViewCell *)loadCell
+{
+	[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:self options:nil];
+	NewFeedItemTableViewCell *cell = self.feedCell;
+	self.feedCell = nil;
+	return cell;
 }
 
 @end

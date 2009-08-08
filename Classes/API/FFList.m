@@ -35,6 +35,7 @@
 {
 	controller = receiver;
 	message = sel;
+	[api fetchHomeFeed:nil start:0 num:0 receiver:self];
 }
 
 - (void)connectionFailed:(NSError *)error
@@ -45,25 +46,6 @@
 		self.errorOccured = YES;
 		[controller performSelector:message withObject:[error localizedDescription]];
 	}
-}
-
-- (void)addFeedItem:(NSDictionary *)element
-{
-	NSDictionary *user = [element objectForKey:@"user"];
-	NSString *nickname = [user objectForKey:@"nickname"];
-	NSDictionary *service = [element objectForKey:@"service"];
-	NSString *serviceId = [service objectForKey:@"id"];
-	NSString *serviceName = [service objectForKey:@"name"];
-	NSString *entryTitle = [element objectForKey:@"title"];
-	
-	FeedItem *feedItem = [[FeedItem alloc] init];
-	feedItem.nickName = nickname;
-	feedItem.title = entryTitle;
-	feedItem.serviceId = serviceId;
-	feedItem.serviceName = serviceName;
-	
-	[feedItems addObject:feedItem];
-	[feedItem release];
 }
 
 - (int)getNumberOfItems
@@ -106,6 +88,23 @@
 		[self addFeedItem:element];
 	}
 	[controller performSelector:message withObject:nil];
+}
+
+- (void)addFeedItem:(NSDictionary *)element
+{
+	NSDictionary *from = [element objectForKey:@"from"];
+	NSString *feedId = [from objectForKey:@"id"];
+	NSString *name = [from objectForKey:@"name"];
+	
+	NSString *body = [element objectForKey:@"body"];
+	
+	FeedItem *feedItem = [[FeedItem alloc] initWithAPI:api];
+	feedItem.feedId = feedId;
+	feedItem.name = name;
+	feedItem.body = body;
+	
+	[feedItems addObject:feedItem];
+	[feedItem release];
 }
 
 @end

@@ -8,20 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FriendFeedAPI.h"
+#import "NewFeedItemTableViewCell.h"
 
-@interface FeedItem : NSObject {
-	NSString *nickName;
-	NSString *serviceId;
-	NSString *serviceName;
-	NSString *title;
-	NSArray *comments;
+@interface FeedItem : NSObject
+{
+	FriendFeedAPI *api;
+	NewFeedItemTableViewCell *cell;
+	
+	UIImage *profilePicture;
+	NSString *feedId;
+	NSString *name;
+	NSString *body;
 }
 
-@property (nonatomic, retain) NSString *nickName;
-@property (nonatomic, retain) NSString *serviceId;
-@property (nonatomic, retain) NSString *serviceName;
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSArray *comments;
+@property (nonatomic, retain) NewFeedItemTableViewCell *cell;
 
+@property (nonatomic, retain) UIImage *profilePicture;
+
+@property (nonatomic, retain) NSString *name;
+@property (nonatomic, retain) NSString *body;
+@property (nonatomic, retain) NSString *feedId;
+
+- (id)initWithAPI:(FriendFeedAPI *)friendFeedAPI;
+
+- (void)loadImage:(NewFeedItemTableViewCell *)feedCell;
+- (void)receivedImage:(id)image;
+- (void)connectionFailed:(NSError *)error;
 
 @end

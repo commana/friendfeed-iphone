@@ -72,12 +72,26 @@
 	if (! uuid)
 	{
 		NSLog(@"Could not open connection.");
-		[object performSelector:@selector(connectionFailed)];
+		[object performSelector:@selector(connectionFailed:)];
 		return;
 	}
 	
 	[apiCalls setObject:[NSNumber numberWithInt:feedType] forKey:uuid];
 	[receivers setObject:object forKey:uuid];	
+}
+
+- (void)fetchProfilePicture:(NSString *)profile receiver:(id)object
+{
+	NSString *url = [NSString stringWithFormat:@"%@%@%@?size=medium", FFAPI_URL, @"picture/", profile];
+	NSString *uuid = [connector open:url username:username remoteKey:remotekey];
+	if (! uuid)
+	{
+		// no error handling for images
+		return;
+	}
+	
+	[apiCalls setObject:[NSNumber numberWithInt:FFAPI_FEED_PICTURE] forKey:uuid];
+	[receivers setObject:object forKey:uuid];
 }
 
 - (id)createJSONObject:(NSData *)data
@@ -96,12 +110,20 @@
 
 - (void)dataHasArrived:(NSData *)data identifier:(NSString *)uuid
 {
-	NSLog(@"%@: received data length: %d", uuid, [data length]);
-	
-	id jsonObject = [self createJSONObject:data];
-	
 	id client = [receivers objectForKey:uuid];
 	int api = [[apiCalls objectForKey:uuid] intValue];
+	
+	id jsonObject = nil;
+	
+	if (api == FFAPI_FEED_PICTURE)
+	{
+		UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
+		[self informClient:client method:@selector(receivedImage:) withObject:image];
+	}
+	else
+	{
+		jsonObject = [self createJSONObject:data];
+	}
 	
 	switch (api)
 	{
@@ -111,6 +133,10 @@
 			
 		case FFAPI_FEED_PUBLIC:
 			[self informClient:client method:@selector(receivedPublicFeed:) withObject:jsonObject];
+			break;
+			
+		case FFAPI_FEED_PICTURE:
+			// nothing more to do
 			break;
 			
 		default:

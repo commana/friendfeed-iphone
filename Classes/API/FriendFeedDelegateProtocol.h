@@ -27,5 +27,7 @@ Returns the most recent public entries on FriendFeed.
 */
 - (void)receivedPublicFeed:(id)feed;
 
+- (void)receivedProfilePicture:(id)picture;
+
 @end
 

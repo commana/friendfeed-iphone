@@ -9,9 +9,15 @@
 #import <Foundation/Foundation.h>
 
 #import "FFList.h"
+#import "NewFeedItemTableViewCell.h"
 
-@interface HomeList : FFList
+@interface HomeList : FFList <UITableViewDataSource>
 {
+	IBOutlet NewFeedItemTableViewCell *feedCell;
 }
+
+@property (nonatomic, retain) NewFeedItemTableViewCell *feedCell;
+
+- (NewFeedItemTableViewCell *)loadCell;
 
 @end
