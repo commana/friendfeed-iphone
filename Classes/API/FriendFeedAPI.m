@@ -83,7 +83,7 @@
 - (void)fetchProfilePicture:(NSString *)profile receiver:(id)object
 {
 	NSString *url = [NSString stringWithFormat:@"%@%@%@?size=medium", FFAPI_URL, @"picture/", profile];
-	NSString *uuid = [connector open:url username:username remoteKey:remotekey];
+	NSString *uuid = [connector open:url];
 	if (! uuid)
 	{
 		// no error handling for images
@@ -96,8 +96,10 @@
 
 - (id)createJSONObject:(NSData *)data
 {
+	if ([data length] == 0) return nil;
+	
 	id jsonObject = NULL;
-    NSString *receivedData = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    NSString *receivedData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	NSScanner *theScanner = [NSScanner scannerWithString:receivedData];
 	[theScanner scanJSONObject:&jsonObject];

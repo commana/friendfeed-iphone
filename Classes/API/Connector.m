@@ -36,8 +36,6 @@
 {
 	[self setUpRequest:url];
 	
-	[request setValue:nil forHTTPHeaderField:@"Authorization"];
-	
 	return [self openConnection];
 }
 
@@ -56,6 +54,8 @@
 {
 	[request setURL:[NSURL URLWithString:url]];
 	[request setHTTPMethod:@"GET"];
+	[request setCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+	[request setValue:nil forHTTPHeaderField:@"Authorization"];
 }
 
 - (NSString *)openConnection

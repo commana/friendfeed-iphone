@@ -26,8 +26,12 @@
 	{
 		cell = [self loadCell];
 	}
+	
 	FeedItem *item = [self getFeedItemAtIndex:indexPath.row];
-	[item loadImage:cell];
+	cell.author.text = item.feedId;
+	cell.content.text = item.body;
+	cell.profilePictureView.image = [UIImage imageNamed:@"nopic.png"];
+	[item loadImageForCell:cell registerMessage:@selector(registerFeedItem:)];
 	
 	return cell;
 }

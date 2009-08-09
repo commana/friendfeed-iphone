@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="2"/>
+			<integer value="13"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -86,7 +86,7 @@
 									<object class="IBUILabel" id="973130670">
 										<reference key="NSNextResponder" ref="314727011"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{65, 7}, {192, 61}}</string>
+										<string key="NSFrame">{{65, 0}, {225, 73}}</string>
 										<reference key="NSSuperview" ref="314727011"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -227,6 +227,7 @@
 						<int key="objectID">14</int>
 						<reference key="object" ref="715480422"/>
 						<reference key="parent" ref="314727011"/>
+						<string key="objectName">AuthorImageView</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">36</int>
@@ -354,7 +355,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">FriendFeed.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../FriendFeed.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>
