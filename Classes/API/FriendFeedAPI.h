@@ -11,6 +11,9 @@
 #import "Connector.h"
 #import "FriendFeedProtocol.h"
 #import "RequestDataProtocol.h"
+#import "ImageCache.h"
+#import "DefaultFeedHandler.h"
+#import "PictureFeedHandler.h"
 
 #define FFAPI_URL @"http://friendfeed-api.com/v2/"
 #define FFAPI_FEED_HOME    0xff100
@@ -24,16 +27,20 @@ extern NSString *const kFFSettingsChanged;
 @interface FriendFeedAPI : NSObject <FriendFeedProtocol, RequestDataProtocol>
 {
 	Connector *connector;
+	ImageCache *imageCache;
+	
 	NSString *username;
 	NSString *remotekey;
 	NSMutableDictionary *apiCalls;
 	NSMutableDictionary *receivers;
 }
 
+- (id)initWithImageCache:(ImageCache *)cache;
+
 - (void)updateCredentials:(NSNotification *)notification;
 - (void)releaseCredentials;
 
 - (void)fetchFeed:(NSString *)urlPart receiver:(id)object feedType:(int)feedType authenticate:(BOOL)needsAuthentication;
-- (void)informClient:(id)object method:(SEL)apiMethod withObject:jsonObject;
+- (void)setUpRequestHandler:(FeedHandler *)handler forURL:(NSString *)url withReceiver:(id)object uuid:(NSString *)uuid;
 
 @end

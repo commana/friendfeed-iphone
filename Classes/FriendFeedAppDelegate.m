@@ -22,7 +22,8 @@ NSString *const kFFSettingsChanged = @"FFSettingsChanged";
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-	FriendFeedAPI *friendFeedAPI = [[FriendFeedAPI alloc] init];
+	ImageCache *imageCache = [[ImageCache alloc] init];
+	FriendFeedAPI *friendFeedAPI = [[FriendFeedAPI alloc] initWithImageCache:imageCache];
 	HomeList *homeList = [[HomeList alloc] initWithAPI:friendFeedAPI];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:friendFeedAPI selector:@selector(updateCredentials:) name:@"FFSettingsChanged" object:nil];

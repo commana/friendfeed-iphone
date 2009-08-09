@@ -23,6 +23,7 @@
 		740A90B31025D1350054A810 /* HomeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90B21025D1350054A810 /* HomeList.m */; };
 		740A90FD1025D70C0054A810 /* FeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 740A90FC1025D70C0054A810 /* FeedItem.m */; };
 		7419F685102DB0B200923924 /* NewFeedItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7419F684102DB0B200923924 /* NewFeedItemTableViewCell.m */; };
+		742E93DA102F0FA3002D9417 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E93D9102F0FA3002D9417 /* ImageCache.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		747E1DB7102EF655004A7607 /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB4102EF655004A7607 /* nopic.png */; };
 		747E1DB8102EF655004A7607 /* settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB5102EF655004A7607 /* settings.xib */; };
@@ -67,6 +68,8 @@
 		740A90FC1025D70C0054A810 /* FeedItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedItem.m; path = Model/FeedItem.m; sourceTree = "<group>"; };
 		7419F683102DB0B200923924 /* NewFeedItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewFeedItemTableViewCell.h; sourceTree = "<group>"; };
 		7419F684102DB0B200923924 /* NewFeedItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewFeedItemTableViewCell.m; sourceTree = "<group>"; };
+		742E93D8102F0FA3002D9417 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCache.h; path = API/ImageCache.h; sourceTree = "<group>"; };
+		742E93D9102F0FA3002D9417 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCache.m; path = API/ImageCache.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		747E1DB4102EF655004A7607 /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nopic.png; path = Resources/nopic.png; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		740A8DD3102448940054A810 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				742E9478102F2015002D9417 /* FeedHandler */,
 				74DC75481026A5E1008E8823 /* Base64.h */,
 				74DC75491026A5E1008E8823 /* Base64.m */,
 				740A8E9210246E160054A810 /* FriendFeedAPI.h */,
@@ -227,6 +231,8 @@
 				740A8E8E10246C1B0054A810 /* FriendFeedProtocol.h */,
 				748711ED10275B7500420DA6 /* FFURLConnection.h */,
 				748711EE10275B7500420DA6 /* FFURLConnection.m */,
+				742E93D8102F0FA3002D9417 /* ImageCache.h */,
+				742E93D9102F0FA3002D9417 /* ImageCache.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -242,6 +248,13 @@
 				748712CE1027674900420DA6 /* FFList.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		742E9478102F2015002D9417 /* FeedHandler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FeedHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +329,7 @@
 				748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */,
 				748712CF1027674900420DA6 /* FFList.m in Sources */,
 				7419F685102DB0B200923924 /* NewFeedItemTableViewCell.m in Sources */,
+				742E93DA102F0FA3002D9417 /* ImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
