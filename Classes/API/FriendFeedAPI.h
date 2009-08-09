@@ -32,7 +32,6 @@ extern NSString *const kFFSettingsChanged;
 	NSString *username;
 	NSString *remotekey;
 	NSMutableDictionary *apiCalls;
-	NSMutableDictionary *receivers;
 }
 
 - (id)initWithImageCache:(ImageCache *)cache;

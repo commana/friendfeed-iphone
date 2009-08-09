@@ -20,6 +20,6 @@
 - (void)processData:(NSData *)data;
 - (void)connectionFailed:(NSError *)error;
 
-- (void)informClient:(SEL)apiMethod withObject:jsonObject;
+- (void)informClient:(SEL)apiMethod withObject:object;
 
 @end

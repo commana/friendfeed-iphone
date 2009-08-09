@@ -19,7 +19,6 @@
 		connector = [[Connector alloc] initWithReceiver:self];
 		imageCache = [cache retain];
 		apiCalls = [[NSMutableDictionary alloc] init];
-		receivers = [[NSMutableDictionary alloc] init];
 	}
 	return self;
 }
@@ -31,7 +30,6 @@
 	[connector release];
 	[imageCache release];
 	[apiCalls release];
-	[receivers release];
 	[super dealloc];
 }
 
@@ -83,14 +81,22 @@
 
 - (void)fetchProfilePicture:(NSString *)profile receiver:(id)object
 {
+	PictureFeedHandler *feedHandler = [[[PictureFeedHandler alloc] initWithImageCache:imageCache] autorelease];
 	NSString *url = [NSString stringWithFormat:@"%@%@%@?size=medium", FFAPI_URL, @"picture/", profile];
+	
+	if ([feedHandler isURLCached:url])
+	{
+		NSLog(@"cache hit: %@", url);
+		[feedHandler processCachedData:[feedHandler getCachedImage:url] forClient:object];
+		return;
+	}
+	
 	NSString *uuid = [connector open:url];
 	if (! uuid)
 	{
 		// no error handling for images
 		return;
 	}
-	FeedHandler *feedHandler = [[[PictureFeedHandler alloc] init] autorelease];
 	[self setUpRequestHandler:feedHandler forURL:url withReceiver:object uuid:uuid];
 }
 

@@ -10,10 +10,18 @@
 
 #import "FeedHandler.h"
 
+@class ImageCache;
+
 @interface PictureFeedHandler : FeedHandler
 {
-
+	ImageCache *imageCache;
 }
 
+- (id)initWithImageCache:(ImageCache *)cache;
+
+- (BOOL)isURLCached:(NSString *)theURL;
+- (UIImage *)getCachedImage:(NSString *)theURL;
+
+- (void)processCachedData:(UIImage *)image forClient:(id)object;
 
 @end
