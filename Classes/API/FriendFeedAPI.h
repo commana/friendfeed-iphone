@@ -11,7 +11,6 @@
 #import "Connector.h"
 #import "FriendFeedProtocol.h"
 #import "RequestDataProtocol.h"
-#import "ImageCache.h"
 #import "DefaultFeedHandler.h"
 #import "PictureFeedHandler.h"
 
@@ -27,14 +26,13 @@ extern NSString *const kFFSettingsChanged;
 @interface FriendFeedAPI : NSObject <FriendFeedProtocol, RequestDataProtocol>
 {
 	Connector *connector;
-	ImageCache *imageCache;
 	
 	NSString *username;
 	NSString *remotekey;
 	NSMutableDictionary *apiCalls;
 }
 
-- (id)initWithImageCache:(ImageCache *)cache;
+- (id)init;
 
 - (void)updateCredentials:(NSNotification *)notification;
 - (void)releaseCredentials;

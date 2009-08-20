@@ -11,13 +11,12 @@
 
 @implementation FriendFeedAPI
 
-- (id)initWithImageCache:(ImageCache *)cache
+- (id)init
 {
 	self = [super init];
 	if (self)
 	{
 		connector = [[Connector alloc] initWithReceiver:self];
-		imageCache = [cache retain];
 		apiCalls = [[NSMutableDictionary alloc] init];
 	}
 	return self;
@@ -28,7 +27,6 @@
 	[self releaseCredentials];
 	
 	[connector release];
-	[imageCache release];
 	[apiCalls release];
 	[super dealloc];
 }
@@ -81,15 +79,8 @@
 
 - (void)fetchProfilePicture:(NSString *)profile receiver:(id)object
 {
-	PictureFeedHandler *feedHandler = [[[PictureFeedHandler alloc] initWithImageCache:imageCache] autorelease];
+	PictureFeedHandler *feedHandler = [[[PictureFeedHandler alloc] init] autorelease];
 	NSString *url = [NSString stringWithFormat:@"%@%@%@?size=medium", FFAPI_URL, @"picture/", profile];
-	
-	if ([feedHandler isURLCached:url])
-	{
-		NSLog(@"cache hit: %@", url);
-		[feedHandler processCachedData:[feedHandler getCachedImage:url] forClient:object];
-		return;
-	}
 	
 	NSString *uuid = [connector open:url];
 	if (! uuid)
