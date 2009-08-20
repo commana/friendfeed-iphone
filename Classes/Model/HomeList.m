@@ -28,10 +28,9 @@
 	}
 	
 	FeedItem *item = [self getFeedItemAtIndex:indexPath.row];
+	cell.profilePictureView.image = [item getProfilePicture];
 	cell.author.text = item.feedId;
 	cell.content.text = item.body;
-	cell.profilePictureView.image = [UIImage imageNamed:@"nopic.png"];
-	[item loadImageForCell:cell registerMessage:@selector(registerFeedItem:)];
 	
 	return cell;
 }
@@ -42,6 +41,13 @@
 	NewFeedItemTableViewCell *cell = self.feedCell;
 	self.feedCell = nil;
 	return cell;
+}
+
+- (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel
+{
+	controller = receiver;
+	message = sel;
+	[api fetchHomeFeed:nil start:0 num:0 receiver:self];
 }
 
 @end

@@ -13,12 +13,13 @@
 
 @synthesize errorOccured;
 
-- (id)initWithAPI:(FriendFeedAPI *)ffapi
+- (id)initWithAPI:(FriendFeedAPI *)ffapi andImageCache:(ImageCache *)cache
 {
 	self = [super init];
 	if (self)
 	{
 		api = [ffapi retain];
+		imageCache = [cache retain];
 		feedItems = [[NSMutableArray array] retain];
 	}
 	return self;
@@ -27,15 +28,14 @@
 - (void)dealloc
 {
 	[api release];
+	[imageCache release];
 	[feedItems release];
 	[super dealloc];
 }
 
 - (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel
 {
-	controller = receiver;
-	message = sel;
-	[api fetchHomeFeed:nil start:0 num:0 receiver:self];
+	// implemented by subclasses
 }
 
 - (void)connectionFailed:(NSError *)error
@@ -98,7 +98,7 @@
 	
 	NSString *body = [element objectForKey:@"body"];
 	
-	FeedItem *feedItem = [[FeedItem alloc] initWithAPI:api];
+	FeedItem *feedItem = [[FeedItem alloc] initWithImageCache:imageCache];
 	feedItem.feedId = feedId;
 	feedItem.name = name;
 	feedItem.body = body;

@@ -45,7 +45,7 @@
 									 target:self
 									 action:@selector(forceReload)];
 	
-	self.navigationItem.rightBarButtonItem = reloadButton;
+	self.navigationItem.leftBarButtonItem = reloadButton;
 	
 	[reloadButton release];
 }

@@ -7,37 +7,54 @@
 //
 
 #import "ImageCache.h"
-
+#import "FFOperation.h"
 
 @implementation ImageCache
 
-- (id)init
+- (id)initWithAPI:(FriendFeedAPI *)ffapi;
 {
 	self = [super init];
 	if (self)
+	{
+		api = [ffapi retain];
 		cache = [[NSMutableDictionary alloc] init];
+		queue = [[NSOperationQueue alloc] init];
+		[queue setMaxConcurrentOperationCount:2];
+	}
 	return self;
 }
 
 - (void)dealloc
 {
+	[api release];
 	[cache release];
+	[queue release];
 	[super dealloc];
 }
 
-- (void)setObject:(id)object forKey:(NSString *)key
+- (UIImage *)getProfilePicture:(NSString *)feedId
 {
-	[cache setObject:object forKey:key];
+	UIImage *picture = [cache objectForKey:feedId];
+	if (! picture)
+	{
+		FFOperation *imageLoader = [[FFOperation alloc] initWithObject:self andMethod:@selector(loadImage:) withObject:feedId];
+		[queue addOperation:imageLoader];
+		[imageLoader release];
+		
+		picture = [UIImage imageNamed:@"nopic.png"];
+	}
+	return picture;
 }
 
-- (id)objectForKey:(NSString *)key
+- (void)loadImage:(NSString *)feedId
 {
-	return [cache objectForKey:key];
+	UIImage *profilePicture = [api fetchProfilePicture:feedId];
+	[self receivedPicture:profilePicture forProfile:feedId];
 }
 
-- (void)removeObjectForKey:(NSString *)key
+- (void)receivedPicture:(id)picture forProfile:(NSString *)feedId
 {
-	[cache removeObjectForKey:key];
+	[cache setObject:picture forKey:feedId];
 }
 
 @end

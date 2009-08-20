@@ -13,6 +13,9 @@
 
 @interface PictureFeedHandler : FeedHandler
 {
+	NSString *feedId;
 }
+
+- (id)initWithFeedId:(NSString *)theFeedId;
 
 @end

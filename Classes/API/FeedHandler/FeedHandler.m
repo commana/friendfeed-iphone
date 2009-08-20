@@ -40,11 +40,19 @@
 	[receiver performSelector:@selector(connectionFailed:) withObject:error];
 }
 
-- (void)informClient:(SEL)apiMethod withObject:object
+- (void)informClient:(SEL)apiMethod withObject:(id)object
 {
 	if ([receiver respondsToSelector:apiMethod])
 	{
 		[receiver performSelector:apiMethod withObject:object];
+	}
+}
+
+- (void)informClient:(SEL)apiMethod withObject:(id)object withObject:(id)anotherObject
+{
+	if ([receiver respondsToSelector:apiMethod])
+	{
+		[receiver performSelector:apiMethod withObject:object withObject:anotherObject];
 	}
 }
 

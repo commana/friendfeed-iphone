@@ -39,6 +39,14 @@
 	return [self openConnection];
 }
 
+- (id)open:(NSString *)url synchronous:(BOOL)isSynchronous
+{
+	if (isSynchronous)
+		return [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+	else
+		return [self open:url];
+}
+
 - (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey
 {
 	[self setUpRequest:url];

@@ -10,10 +10,26 @@
 
 @implementation PictureFeedHandler
 
+- (id)initWithFeedId:(NSString *)theFeedId
+{
+	self = [super init];
+	if (self)
+	{
+		feedId = [theFeedId copy];
+	}
+	return self;
+}
+
+- (void)dealloc
+{
+	[feedId release];
+	[super dealloc];
+}
+
 - (void)processData:(NSData *)data
 {
 	UIImage *image = [[[UIImage alloc] initWithData:data] autorelease];
-	[self informClient:@selector(receivedImage:) withObject:image];
+	[self informClient:@selector(receivedPicture:forProfile:) withObject:image withObject:feedId];
 }
 
 @end

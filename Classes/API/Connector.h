@@ -20,6 +20,7 @@
 - (id)initWithReceiver:(id<RequestDataProtocol>)dataReceiver;
 
 - (NSString *)open:(NSString *)url;
+- (id)open:(NSString *)url synchronous:(BOOL)isSynchronous;
 - (NSString *)open:(NSString *)url username:(NSString *)username remoteKey:(NSString *)remotekey;
 - (NSString *)openConnection;
 

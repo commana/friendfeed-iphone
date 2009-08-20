@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FriendFeedAPI.h"
+#import "ImageCache.h"
 #import "NewFeedItemTableViewCell.h"
 
 @interface FeedItem : NSObject
 {
-	FriendFeedAPI *api;
+	ImageCache *imageCache;
 	NewFeedItemTableViewCell *cell;
 	
 	NSString *feedId;
@@ -27,10 +27,8 @@
 @property (nonatomic, retain) NSString *body;
 @property (nonatomic, retain) NSString *feedId;
 
-- (id)initWithAPI:(FriendFeedAPI *)friendFeedAPI;
+- (id)initWithImageCache:(ImageCache *)theImageCache;
 
-- (void)loadImageForCell:(NewFeedItemTableViewCell *)feedCell registerMessage:(SEL)helloMessage;
-- (void)receivedImage:(UIImage *)image;
-- (void)connectionFailed:(NSError *)error;
+- (UIImage *)getProfilePicture;
 
 @end

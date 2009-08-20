@@ -77,18 +77,10 @@
 	[self setUpRequestHandler:feedHandler forURL:url withReceiver:object uuid:uuid];
 }
 
-- (void)fetchProfilePicture:(NSString *)profile receiver:(id)object
+- (UIImage *)fetchProfilePicture:(NSString *)profile
 {
-	PictureFeedHandler *feedHandler = [[[PictureFeedHandler alloc] init] autorelease];
 	NSString *url = [NSString stringWithFormat:@"%@%@%@?size=medium", FFAPI_URL, @"picture/", profile];
-	
-	NSString *uuid = [connector open:url];
-	if (! uuid)
-	{
-		// no error handling for images
-		return;
-	}
-	[self setUpRequestHandler:feedHandler forURL:url withReceiver:object uuid:uuid];
+	return [UIImage imageWithData:[connector open:url synchronous:YES]];
 }
 
 - (void)setUpRequestHandler:(FeedHandler *)handler forURL:(NSString *)url withReceiver:(id)object uuid:(NSString *)uuid

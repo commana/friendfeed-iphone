@@ -14,6 +14,7 @@
 
 @interface FFList : NSObject <FriendFeedDelegateProtocol>
 {
+	ImageCache *imageCache;
 	FriendFeedAPI *api;
 	NSMutableArray *feedItems;
 	
@@ -26,7 +27,7 @@
 
 @property (nonatomic) BOOL errorOccured;
 
-- (id)initWithAPI:(FriendFeedAPI *)ffapi;
+- (id)initWithAPI:(FriendFeedAPI *)ffapi andImageCache:(ImageCache *)cache;
 
 - (void)loadWithReceiver:(UIViewController *)receiver selector:(SEL)sel;
 - (void)addFeedItem:(NSDictionary *)element;

@@ -8,14 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "FriendFeedAPI.h"
 
 @interface ImageCache : NSObject
 {
+	FriendFeedAPI *api;
+	
 	NSMutableDictionary *cache;
+	NSOperationQueue *queue;
 }
 
-- (void)setObject:(id)object forKey:(NSString *)key;
-- (id)objectForKey:(NSString *)key;
-- (void)removeObjectForKey:(NSString *)key;
+- (id)initWithAPI:(FriendFeedAPI *)api;
+
+- (UIImage *)getProfilePicture:(NSString *)feedId;
+
+- (void)receivedPicture:(id)picture forProfile:(NSString *)feedId;
 
 @end

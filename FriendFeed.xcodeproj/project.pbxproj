@@ -32,7 +32,8 @@
 		747E1DB8102EF655004A7607 /* settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB5102EF655004A7607 /* settings.xib */; };
 		747E1DB9102EF655004A7607 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB6102EF655004A7607 /* TableViewCell.xib */; };
 		748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 748711EE10275B7500420DA6 /* FFURLConnection.m */; };
-		748712CF1027674900420DA6 /* FFList.m in Sources */ = {isa = PBXBuildFile; fileRef = 748712CE1027674900420DA6 /* FFList.m */; };
+		74878E0A103D9F96006A4ABD /* FFList.m in Sources */ = {isa = PBXBuildFile; fileRef = 74878E09103D9F96006A4ABD /* FFList.m */; };
+		74878E54103DA707006A4ABD /* FFOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 74878E53103DA707006A4ABD /* FFOperation.m */; };
 		74DC754A1026A5E1008E8823 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DC75491026A5E1008E8823 /* Base64.m */; };
 /* End PBXBuildFile section */
 
@@ -86,8 +87,10 @@
 		747E1DB6102EF655004A7607 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TableViewCell.xib; path = Resources/TableViewCell.xib; sourceTree = "<group>"; };
 		748711ED10275B7500420DA6 /* FFURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFURLConnection.h; path = API/FFURLConnection.h; sourceTree = "<group>"; };
 		748711EE10275B7500420DA6 /* FFURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFURLConnection.m; path = API/FFURLConnection.m; sourceTree = "<group>"; };
-		748712CD1027674900420DA6 /* FFList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFList.h; path = API/FFList.h; sourceTree = "<group>"; };
-		748712CE1027674900420DA6 /* FFList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFList.m; path = API/FFList.m; sourceTree = "<group>"; };
+		74878E08103D9F96006A4ABD /* FFList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFList.h; path = Model/FFList.h; sourceTree = "<group>"; };
+		74878E09103D9F96006A4ABD /* FFList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFList.m; path = Model/FFList.m; sourceTree = "<group>"; };
+		74878E52103DA707006A4ABD /* FFOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFOperation.h; path = API/FFOperation.h; sourceTree = "<group>"; };
+		74878E53103DA707006A4ABD /* FFOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFOperation.m; path = API/FFOperation.m; sourceTree = "<group>"; };
 		74DC75481026A5E1008E8823 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = API/Base64.h; sourceTree = "<group>"; };
 		74DC75491026A5E1008E8823 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Base64.m; path = API/Base64.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 				748711EE10275B7500420DA6 /* FFURLConnection.m */,
 				742E93D8102F0FA3002D9417 /* ImageCache.h */,
 				742E93D9102F0FA3002D9417 /* ImageCache.m */,
+				74878E52103DA707006A4ABD /* FFOperation.h */,
+				74878E53103DA707006A4ABD /* FFOperation.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -249,12 +254,12 @@
 		740A90B01025D0FC0054A810 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				74878E08103D9F96006A4ABD /* FFList.h */,
+				74878E09103D9F96006A4ABD /* FFList.m */,
 				740A90FB1025D70C0054A810 /* FeedItem.h */,
 				740A90FC1025D70C0054A810 /* FeedItem.m */,
 				740A90B11025D1350054A810 /* HomeList.h */,
 				740A90B21025D1350054A810 /* HomeList.m */,
-				748712CD1027674900420DA6 /* FFList.h */,
-				748712CE1027674900420DA6 /* FFList.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -342,12 +347,13 @@
 				740A90FD1025D70C0054A810 /* FeedItem.m in Sources */,
 				74DC754A1026A5E1008E8823 /* Base64.m in Sources */,
 				748711EF10275B7500420DA6 /* FFURLConnection.m in Sources */,
-				748712CF1027674900420DA6 /* FFList.m in Sources */,
 				7419F685102DB0B200923924 /* NewFeedItemTableViewCell.m in Sources */,
 				742E93DA102F0FA3002D9417 /* ImageCache.m in Sources */,
 				742E947F102F2143002D9417 /* DefaultFeedHandler.m in Sources */,
 				742E9480102F2143002D9417 /* FeedHandler.m in Sources */,
 				742E9481102F2143002D9417 /* PictureFeedHandler.m in Sources */,
+				74878E0A103D9F96006A4ABD /* FFList.m in Sources */,
+				74878E54103DA707006A4ABD /* FFOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

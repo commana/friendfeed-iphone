@@ -23,7 +23,7 @@
 
 - (void)dealloc
 {
-	if (uuid) [uuid release];
+	[uuid release];
 	[super dealloc];
 }
 
