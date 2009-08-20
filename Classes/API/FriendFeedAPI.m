@@ -33,10 +33,8 @@
 
 - (void)releaseCredentials
 {
-	if (username)
-		[username release];
-	if (remotekey)
-		[remotekey release];
+	[username release];
+	[remotekey release];
 }
 
 - (void)updateCredentials:(NSNotification *)notification

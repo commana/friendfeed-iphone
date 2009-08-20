@@ -11,13 +11,12 @@
 #import "Connector.h"
 #import "FriendFeedProtocol.h"
 #import "RequestDataProtocol.h"
+#import "FeedHandler.h"
 #import "DefaultFeedHandler.h"
-#import "PictureFeedHandler.h"
 
 #define FFAPI_URL @"http://friendfeed-api.com/v2/"
 #define FFAPI_FEED_HOME    0xff100
 #define FFAPI_FEED_PUBLIC  0xff101
-#define FFAPI_FEED_PICTURE 0xff102
 
 extern NSString *const kFFUserName;
 extern NSString *const kFFRemoteKey;

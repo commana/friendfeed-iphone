@@ -26,7 +26,6 @@
 		742E93DA102F0FA3002D9417 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E93D9102F0FA3002D9417 /* ImageCache.m */; };
 		742E947F102F2143002D9417 /* DefaultFeedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E947A102F2143002D9417 /* DefaultFeedHandler.m */; };
 		742E9480102F2143002D9417 /* FeedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E947C102F2143002D9417 /* FeedHandler.m */; };
-		742E9481102F2143002D9417 /* PictureFeedHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 742E947E102F2143002D9417 /* PictureFeedHandler.m */; };
 		74762B7110221C4A00170A19 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74762B7010221C4A00170A19 /* PreferencesController.m */; };
 		747E1DB7102EF655004A7607 /* nopic.png in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB4102EF655004A7607 /* nopic.png */; };
 		747E1DB8102EF655004A7607 /* settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 747E1DB5102EF655004A7607 /* settings.xib */; };
@@ -78,8 +77,6 @@
 		742E947A102F2143002D9417 /* DefaultFeedHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DefaultFeedHandler.m; path = API/FeedHandler/DefaultFeedHandler.m; sourceTree = "<group>"; };
 		742E947B102F2143002D9417 /* FeedHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FeedHandler.h; path = API/FeedHandler/FeedHandler.h; sourceTree = "<group>"; };
 		742E947C102F2143002D9417 /* FeedHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FeedHandler.m; path = API/FeedHandler/FeedHandler.m; sourceTree = "<group>"; };
-		742E947D102F2143002D9417 /* PictureFeedHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PictureFeedHandler.h; path = API/FeedHandler/PictureFeedHandler.h; sourceTree = "<group>"; };
-		742E947E102F2143002D9417 /* PictureFeedHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PictureFeedHandler.m; path = API/FeedHandler/PictureFeedHandler.m; sourceTree = "<group>"; };
 		74762B6F10221C4A00170A19 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		74762B7010221C4A00170A19 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		747E1DB4102EF655004A7607 /* nopic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nopic.png; path = Resources/nopic.png; sourceTree = "<group>"; };
@@ -271,8 +268,6 @@
 				742E947A102F2143002D9417 /* DefaultFeedHandler.m */,
 				742E947B102F2143002D9417 /* FeedHandler.h */,
 				742E947C102F2143002D9417 /* FeedHandler.m */,
-				742E947D102F2143002D9417 /* PictureFeedHandler.h */,
-				742E947E102F2143002D9417 /* PictureFeedHandler.m */,
 			);
 			name = FeedHandler;
 			sourceTree = "<group>";
@@ -351,7 +346,6 @@
 				742E93DA102F0FA3002D9417 /* ImageCache.m in Sources */,
 				742E947F102F2143002D9417 /* DefaultFeedHandler.m in Sources */,
 				742E9480102F2143002D9417 /* FeedHandler.m in Sources */,
-				742E9481102F2143002D9417 /* PictureFeedHandler.m in Sources */,
 				74878E0A103D9F96006A4ABD /* FFList.m in Sources */,
 				74878E54103DA707006A4ABD /* FFOperation.m in Sources */,
 			);
